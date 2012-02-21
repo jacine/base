@@ -1,0 +1,3 @@
+[submodule "lib/box-sizing"]
+	path = lib/box-sizing
+	url = https://github.com/adamnbowen/box-sizing-polyfill.git
