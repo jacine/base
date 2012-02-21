@@ -1,0 +1,77 @@
+// Forms
+//------------------------------------------------------------------------------
+
+fieldset
+  border: none
+  padding: 0
+  margin: 0 0 1em 0
+
+legend
+  font-weight: bold
+
+label
+  display: block
+  font-weight: bold
+  &.option
+    font-weight: normal
+    +inline-block
+
+.form-control
+  +pie-clearfix
+  margin: 1em 0
+  position: relative
+  td &
+    margin: 0
+
+.form-text,
+.form-textarea,
+.form-password,
+.form-select
+  border: solid 1px #ddd
+
+.form-text,
+.form-textarea,
+.form-password
+  padding: 0.375em
+
+.form-submit,
+.form-actions a,
+input[type="file"]::-webkit-file-upload-button
+  +background-clip(padding-box)
+  background-color: $link
+  border: none
+  +border-radius(3px)
+  color: #fff
+  cursor: pointer
+  +inline-block
+  +linear-gradient(darken($link, 20%), $link)
+  line-height: 1
+  margin: 0 0.5em 0 0
+  outline: none
+  padding: 0.5em 1em
+  text-decoration: none
+  white-space: nowrap
+  &:hover,
+  &:visited,
+  &:focus,
+  &:active
+    background-color: darken($link, 20%)
+    +linear-gradient(darken($link, 30%), darken($link, 20%))
+    color: #fff
+    text-decoration: none
+  &:first-child
+    font-weight: bold
+  &::-moz-focus-inner
+    border: 0
+    padding: 0
+
+.form-item .description
+  color: #777
+  font-size: 0.923em
+  margin-top: 4px
+
+.form-actions
+  padding: 1em 0
+
+.form-required
+  color: #c00

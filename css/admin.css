@@ -1,0 +1,118 @@
+.icon-sprite, .ascending, .descending, a.tabledrag-handle .handle, tr.drag a.tabledrag-handle .handle, a.tabledrag-handle-hover .handle, div#toolbar div.toolbar-shortcuts ul.menu li a[href="/node/add"]:before, div#toolbar div.toolbar-shortcuts ul.menu li a[href="/admin/content"]:before, div#toolbar a#edit-shortcuts {
+  background: url('../img/icon-s895b624d63.png') no-repeat;
+}
+
+.sort {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+}
+.sort {
+  *display: inline;
+}
+
+.ascending {
+  background-position: 0 0;
+  height: 16px;
+  width: 16px;
+}
+
+.descending {
+  background-position: 0 -948px;
+  height: 16px;
+  width: 16px;
+}
+
+th.active {
+  white-space: nowrap;
+}
+
+.draggable a.tabledrag-handle {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  margin: 0 5px 0 0;
+  padding: 0;
+  vertical-align: bottom;
+}
+.draggable a.tabledrag-handle {
+  *display: inline;
+}
+
+a.tabledrag-handle:hover {
+  text-decoration: none;
+}
+a.tabledrag-handle .handle {
+  background-position: 0 -2222px;
+  height: 16px;
+  width: 16px;
+  margin-top: 0;
+}
+tr.drag a.tabledrag-handle .handle {
+  background-position: 0 -1906px;
+}
+
+a.tabledrag-handle-hover .handle {
+  background-position: 0 -2538px;
+}
+
+tr.draggable td:first-child {
+  white-space: nowrap;
+}
+
+a.tabledrag-toggle-weight {
+  margin-right: 0;
+}
+
+.tabledrag-toggle-weight-wrapper {
+  font-size: 0.846em;
+  margin-bottom: 1em;
+}
+
+#toolbar-home {
+  float: left;
+}
+
+div#toolbar div.toolbar-shortcuts ul.menu li span.icon {
+  background: #444444 sprite-url !important;
+  width: 17px;
+  height: 24px;
+}
+div#toolbar div.toolbar-shortcuts ul.menu li a[href="/node/add"],
+div#toolbar div.toolbar-shortcuts ul.menu li a[href="/admin/content"] {
+  padding-left: 24px;
+  position: relative;
+}
+div#toolbar div.toolbar-shortcuts ul.menu li a[href="/node/add"]:before,
+div#toolbar div.toolbar-shortcuts ul.menu li a[href="/admin/content"]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 4px;
+}
+div#toolbar div.toolbar-shortcuts ul.menu li a[href="/node/add"]:before {
+  background-position: 0 -1590px;
+  background-position: 0 -1586px;
+}
+div#toolbar div.toolbar-shortcuts ul.menu li a[href="/admin/content"]:before {
+  background-position: 0 -4434px;
+  background-position: 0 -4430px;
+}
+div#toolbar a#edit-shortcuts {
+  background-position: 0 -2854px;
+  background-position: 0 -2845px;
+  padding-left: 24px;
+}
+
+.admin-list a {
+  text-decoration: none;
+}

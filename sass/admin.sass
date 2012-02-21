@@ -1,0 +1,88 @@
+@import partials/base
+
+// Tablesort
+//------------------------------------------------------------------------------
+.sort
+  +inline-block
+  +hide-text
+
+.ascending
+  +icon-sprite(arrow-down, true)
+
+.descending
+  +icon-sprite(arrow-up, true)
+
+th.active
+  white-space: nowrap
+
+
+// Tabledrag
+//------------------------------------------------------------------------------
+.draggable a.tabledrag-handle
+  +inline-block
+  margin: 0 5px 0 0
+  padding: 0
+  vertical-align: bottom
+
+a.tabledrag-handle
+  &:hover
+    text-decoration: none
+  .handle
+    +icon-sprite(crosshair-gray, true)
+    margin-top: 0
+    tr.drag &
+      +icon-sprite(crosshair-blue)
+
+a.tabledrag-handle-hover .handle
+  +icon-sprite(crosshair)
+
+tr.draggable td:first-child
+  white-space: nowrap
+
+a.tabledrag-toggle-weight
+  @extend .form-submit
+  margin-right: 0
+
+.tabledrag-toggle-weight-wrapper
+  font-size: 0.846em
+  margin-bottom: 1em
+
+
+// Toolbar
+//------------------------------------------------------------------------------
+#toolbar-home
+  float: left
+div#toolbar
+  div.toolbar-shortcuts ul.menu li
+    span.icon
+      background: #444 sprite-url !important
+      width: 17px
+      height: 24px
+    a[href="/node/add"],
+    a[href="/admin/content"]
+      padding-left: 24px
+      position: relative
+      &:before
+        content: ""
+        display: block
+        position: absolute
+        width: 24px
+        height: 24px
+        left: 4px
+    a[href="/node/add"]:before
+      +icon-sprite(create-edit)
+      +icon-sprite-position(create-edit, 0px, 4px)
+    a[href="/admin/content"]:before
+      +icon-sprite(search-white)
+      +icon-sprite-position(search-white, 0px, 4px)
+  a#edit-shortcuts
+    +icon-sprite(edit)
+    +icon-sprite-position(edit, 0px, 9px)
+    padding-left: 24px
+
+
+// Admin lists
+//------------------------------------------------------------------------------
+.admin-list
+  a
+    text-decoration: none

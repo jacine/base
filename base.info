@@ -1,0 +1,14 @@
+name = Base
+core = 7.x
+description = Base theme
+
+stylesheets[screen and (min-device-width: 768px)][] = css/styles.css
+
+regions[header] = Header
+regions[navigation] = Navigation
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = Sidebar first
+regions[sidebar_second] = Sidebar second
+regions[footer] = Footer

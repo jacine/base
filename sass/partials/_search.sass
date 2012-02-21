@@ -1,0 +1,31 @@
+.block-search, .search-form
+  text-align: center
+  .container-inline
+    position: relative
+    width: 100%
+    max-width: 320px
+    +inline-block
+    +pie-clearfix
+  input.form-text
+    float: left
+    height: 32px
+    padding-right: 36px
+    width: 100%
+  input.form-submit
+    +icon-sprite(search)
+    +icon-sprite-position(search, 8px, 7px)
+    +reset-box-model
+    +hide-text
+    border: none
+    height: 32px
+    width: 32px
+    position: absolute
+    top: 0
+    right: 0
+    z-index: 1
+    &:hover, &:focus, &:active
+      border: none
+      cursor: pointer
+
+.search-form input.form-submit
+  top: 1.231em
