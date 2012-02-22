@@ -2,97 +2,98 @@
   background: url('../img/icon-s895b624d63.png') no-repeat;
 }
 
-.container {
-  *zoom: 1;
-  margin: auto;
-  width: 980px;
-  max-width: 100%;
-}
-.container:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+@media screen and (min-device-width: 768px) {
+  .container {
+    *zoom: 1;
+    margin: auto;
+    width: 980px;
+    max-width: 100%;
+  }
+  .container:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 
-.one-sidebar .column-first,
-.one-sidebar .column-second {
-  display: inline;
-  float: left;
-  width: 22.449%;
-  margin-right: 2.041%;
-}
-.one-sidebar .column-main {
-  display: inline;
-  float: left;
-  width: 71.429%;
-  margin-right: 2.041%;
-}
+  .one-sidebar .column-first,
+  .one-sidebar .column-second {
+    display: inline;
+    float: left;
+    width: 22.449%;
+    margin-right: 2.041%;
+  }
+  .one-sidebar .column-main {
+    display: inline;
+    float: left;
+    width: 71.429%;
+    margin-right: 2.041%;
+  }
 
-.sidebar-first .column-first {
-  margin-left: 2.041%;
-}
-.sidebar-first .column-main {
-  display: inline;
-  float: right;
-  margin-right: 2.041%;
-  #margin-left: -20px;
-}
+  .sidebar-first .column-first {
+    margin-left: 2.041%;
+  }
+  .sidebar-first .column-main {
+    display: inline;
+    float: right;
+    margin-right: 2.041%;
+    #margin-left: -20px;
+  }
 
-.sidebar-second .column-second {
-  display: inline;
-  float: right;
-  margin-right: 2.041%;
-  #margin-left: -20px;
-}
-.sidebar-second .column-main {
-  margin-left: 2.041%;
-}
+  .sidebar-second .column-second {
+    display: inline;
+    float: right;
+    margin-right: 2.041%;
+    #margin-left: -20px;
+  }
+  .sidebar-second .column-main {
+    margin-left: 2.041%;
+  }
 
-.two-sidebars .column-first {
-  display: inline;
-  float: left;
-  width: 22.449%;
-  margin-right: 2.041%;
-  position: relative;
-  left: -48.98%;
-  margin-left: 2.041%;
-}
-.two-sidebars .column-main {
-  display: inline;
-  float: left;
-  width: 46.939%;
-  margin-right: 2.041%;
-  position: relative;
-  left: 26.531%;
-}
-.two-sidebars .column-second {
-  display: inline;
-  float: left;
-  width: 22.449%;
-  margin-right: 2.041%;
-  display: inline;
-  float: right;
-  margin-right: 2.041%;
-  #margin-left: -20px;
-}
+  .two-sidebars .column-first {
+    display: inline;
+    float: left;
+    width: 22.449%;
+    margin-right: 2.041%;
+    position: relative;
+    left: -48.98%;
+    margin-left: 2.041%;
+  }
+  .two-sidebars .column-main {
+    display: inline;
+    float: left;
+    width: 46.939%;
+    margin-right: 2.041%;
+    position: relative;
+    left: 26.531%;
+  }
+  .two-sidebars .column-second {
+    display: inline;
+    float: left;
+    width: 22.449%;
+    margin-right: 2.041%;
+    display: inline;
+    float: right;
+    margin-right: 2.041%;
+    #margin-left: -20px;
+  }
 
-.no-sidebars .column-main {
-  *zoom: 1;
-  margin: auto;
-  width: 980px;
-  max-width: 100%;
+  .no-sidebars .column-main {
+    *zoom: 1;
+    margin: auto;
+    width: 980px;
+    max-width: 100%;
+  }
+  .no-sidebars .column-main:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .no-sidebars .wrap {
+    clear: both;
+    margin-left: 2.041%;
+    margin-right: 2.041%;
+  }
 }
-.no-sidebars .column-main:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.no-sidebars .wrap {
-  clear: both;
-  margin-left: 2.041%;
-  margin-right: 2.041%;
-}
-
 @media screen and (min-width: 320px) and (max-width: 480px) {
   .one-sidebar .column-first,
   .one-sidebar .column-second,

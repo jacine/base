@@ -2,7 +2,7 @@ name = Base
 core = 7.x
 description = Base theme
 
-stylesheets[screen and (min-device-width: 768px)][] = css/styles.css
+stylesheets[screen][] = css/styles.css
 
 regions[header] = Header
 regions[navigation] = Navigation
