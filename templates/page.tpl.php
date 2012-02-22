@@ -60,55 +60,47 @@ $action_links = render($action_links);
 <div class="main" id="main">
   <div class="container">
     <div role="main" class="column-main">
-      <div class="wrap">
-        <?php print $breadcrumb; ?>
-        <?php print render($title_prefix); ?>
-        <?php if ($title): ?>
-          <h1 class="title" id="page-title"><?php print $title; ?></h1>
-        <?php endif; ?>
-        <?php print render($title_suffix); ?>
-        <?php if ($tabs || $action_links): ?>
-          <div class="tasks">
-          <?php print $tabs; ?>
-          <?php if ($action_links): ?>
-            <div class="actions actions-<?php print ($actions == 1) ? 'single' : 'multiple'; ?>">
-              <div class="wrap">
-                <h2><?php print t('Page actions'); ?></h2>
-                <ul class="action-links">
-                  <?php print $action_links; ?>
-                </ul>
-              </div>
+      <?php print $breadcrumb; ?>
+      <?php print render($title_prefix); ?>
+      <?php if ($title): ?>
+        <h1 class="title" id="page-title"><?php print $title; ?></h1>
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
+      <?php if ($tabs || $action_links): ?>
+        <div class="tasks">
+        <?php print $tabs; ?>
+        <?php if ($action_links): ?>
+          <div class="actions actions-<?php print ($actions == 1) ? 'single' : 'multiple'; ?>">
+            <div class="wrap">
+              <h2><?php print t('Page actions'); ?></h2>
+              <ul class="action-links">
+                <?php print $action_links; ?>
+              </ul>
             </div>
-          <?php endif; ?>
           </div>
         <?php endif; ?>
-        <?php print $help; ?>
-        <div id="content">
-          <?php print $content; ?>
         </div>
-        <?php print $feed_icons; ?>
+      <?php endif; ?>
+      <?php print $help; ?>
+      <div id="content">
+        <?php print $content; ?>
       </div>
+      <?php print $feed_icons; ?>
     </div>
     <?php if ($sidebar_first): ?>
       <div class="column-first sidebar">
-        <div class="wrap">
-          <?php print $sidebar_first; ?>
-        </div>
+        <?php print $sidebar_first; ?>
       </div>
     <?php endif; ?>
     <?php if ($sidebar_second): ?>
       <div class="column-second sidebar">
-        <div class="wrap">
-          <?php print $sidebar_second; ?>
-        </div>
+        <?php print $sidebar_second; ?>
       </div>
     <?php endif; ?>
   </div>
 </div>
 <footer role="contentinfo" id="footer">
   <div class="container">
-    <div class="wrap">
-      <?php print $footer; ?>
-    </div>
+    <?php print $footer; ?>
   </div>
 </footer>
