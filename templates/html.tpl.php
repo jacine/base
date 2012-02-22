@@ -3,9 +3,10 @@
   <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <?php print $styles; ?>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <?php print $scripts; ?>
-  <!--[if lt IE 9]><script src="/<?php print $path; ?>/js/html5.js"></script><![endif]-->
 </head>
 <body<?php print $body_attributes;?>>
   <a href="#content" class="invisible focusable"><?php print t('Skip to main content'); ?></a>
