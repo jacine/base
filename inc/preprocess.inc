@@ -189,7 +189,11 @@ function base_preprocess_block(&$vars) {
  */
 function base_preprocess_node(&$vars) {
   $node = $vars['node'];
-  
+
+  if ($vars['view_mode']) {
+    $vars['classes_array'][] = 'view-mode-' . drupal_html_class($vars['view_mode']);
+  }
+
   // Add article ARIA role.
   $vars['attributes_array']['role'] = 'article';
 
