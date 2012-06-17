@@ -3,10 +3,12 @@
 /**
  * Overrides theme_breadcrumb().
  * - Add <nav> wrapper.
+ * - Add heading.
  */
 function base_breadcrumb($vars) {
   if (!empty($vars['breadcrumb']) && count($vars['breadcrumb']) > 1) {
-    return '<nav class="breadcrumbs" aria-label="' . t('You are here') . '">' . implode(' / ', $vars['breadcrumb']) . '</nav>';
+    $heading = t('Breadcrumb Navigation');
+    return '<nav class="breadcrumbs"><h2 class="visuallyhidden">' . $heading . '</h2>\n' . implode(' / ', $vars['breadcrumb']) . '</nav>';
   }
 }
 
@@ -35,14 +37,14 @@ function base_menu_local_tasks(&$vars) {
   $output = '';
 
   if (!empty($vars['primary'])) {
-    $vars['primary']['#prefix'] = '<h2 class="invisible">' . t('Primary tabs') . '</h2>';
+    $vars['primary']['#prefix'] = '<h2 class="visuallyhidden">' . t('Primary tabs') . '</h2>';
     $vars['primary']['#prefix'] .= '<ul class="tabs primary">';
     $vars['primary']['#suffix'] = '</ul>';
     $output .= render($vars['primary']);
   }
   if (!empty($vars['secondary'])) {
-    $vars['secondary']['#prefix'] = '<h2 class="invisible">' . t('Secondary tabs') . '</h2>';
-    $vars['secondary']['#prefix'] = '<ul class="tabs secondary" aria-label="' . t('Secondary tabs') . '">';
+    $vars['secondary']['#prefix'] = '<h2 class="visuallyhidden">' . t('Secondary tabs') . '</h2>';
+    $vars['secondary']['#prefix'] = '<ul class="tabs secondary">';
     $vars['secondary']['#suffix'] = '</ul>';
     $output .= render($vars['secondary']);
   }

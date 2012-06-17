@@ -9,7 +9,7 @@
   <?php print $scripts; ?>
 </head>
 <body<?php print $body_attributes;?>>
-  <a href="#content" class="invisible focusable"><?php print t('Skip to main content'); ?></a>
+  <a href="#main" class="visuallyhidden focusable skip-link"><?php print t('Skip to main content'); ?></a>
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>

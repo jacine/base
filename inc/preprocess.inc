@@ -87,12 +87,10 @@ function base_preprocess_block(&$vars) {
   // Add the block ID as a class.
   $vars['classes_array'][] = $vars['block_html_id'];
 
-  $vars['title_attributes_array']['class'][] = 'block-title';
-  
   // Hide the block titles in the header and navigation regions by default.
   if ($vars['block']->region == 'header' || $vars['block']->region == 'navigation') {
-    $vars['title_attributes_array']['class'][] = 'invisible';
-  }    
+    $vars['title_attributes_array']['class'][] = 'visuallyhidden';
+  }
 
   // Add default "content" class to the block template. Removing this in a sub-theme
   // for example, will prevent a div from printing, unless there are RDF attributes.
