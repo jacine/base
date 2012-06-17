@@ -69,6 +69,8 @@ function base_tablesort_indicator($vars) {
 
 /**
  * Overrides theme_links().
+ * This version is from the Edge module. The patch was RTBC for Drupal 7, but it
+ * was "too late." In addition to being more efficient it fixes a couple bugs.
  */
 function base_links($vars) {
   global $language_url;
@@ -87,7 +89,7 @@ function base_links($vars) {
       }
       // Merge in default array properties into $heading.
       $heading += array(
-        'level' => 'h2', 
+        'level' => 'h2',
         'attributes' => array(),
       );
       // @todo Remove backwards compatibility for $heading['class'].
@@ -133,7 +135,7 @@ function base_links($vars) {
       else {
         // Merge in default array properties into $link.
         $link += array(
-          'html' => FALSE, 
+          'html' => FALSE,
           'attributes' => array(),
         );
         $item = '<span' . drupal_attributes($link['attributes']) . '>';
