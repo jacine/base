@@ -1,19 +1,18 @@
 .block-search, .search-form
   text-align: center
   .container-inline
+    @extend .pie-clearfix
+    +inline-block
     position: relative
     width: 100%
     max-width: 320px
-    +inline-block
-    +pie-clearfix
   input.form-text
     float: left
     height: 32px
     padding-right: 36px
     width: 100%
   input.form-submit
-    +icon-sprite(search)
-    +icon-sprite-position(search, 8px, 7px)
+    +icon-sprite(search, false, 8, 7)
     +reset-box-model
     +hide-text
     border: none

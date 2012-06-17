@@ -2,7 +2,7 @@
 //------------------------------------------------------------------------------
 
 .tasks
-  +pie-clearfix
+  @extend .pie-clearfix
   position: relative
   min-height: 32px
   * html .tasks
@@ -11,17 +11,18 @@
 nav.tabs
   margin: 16px 0
   position: relative
-  
+
 
 ul.tabs
-  +pie-clearfix
+  @extend .pie-clearfix
   margin: 0
   padding: 0
-  li
-    float: left
-    height: 32px
-    margin-bottom: 0
-    padding: 0
+
+.tabs li
+  float: left
+  height: 32px
+  margin-bottom: 0
+  padding: 0
 
 
 // Primary
@@ -29,6 +30,8 @@ ul.tabs
 
 ul.primary
   border-bottom: solid 1px #ddd
+
+.primary
   a
     background: #f5f5f5
     border: solid 1px #ddd
@@ -40,16 +43,17 @@ ul.primary
     margin: 0
     padding: 0 20px
     position: relative
-    &:hover,
-    &:focus
-      background-color: #eee
-    &.active
-      background: #fff
+    &:hover, &:focus, &.active
       border-left-width: 1px
       border-radius: 2px 2px 0 0
       height: 32px
       margin: -4px 0 0 -1px
       padding-top: 4px
+    &:hover,
+    &:focus
+      background-color: #eee
+    &.active
+      background: #fff
   li:first-child a
     border-width: 1px 1px 0 1px
     border-radius: 2px 0 0 0
@@ -59,7 +63,7 @@ ul.primary
   li:last-child a
     border-radius: 0 2px 0 0
 
-* html ul.primary a
+* html .primary a
   float: left
 
 
@@ -69,6 +73,8 @@ ul.primary
 ul.secondary
   font-size: 0.923em
   padding: 1em 0
+
+.secondary
   li
     margin: 0 2px 0 0
   a
@@ -80,7 +86,7 @@ ul.secondary
     &:focus,
     &.active
       font-weight: bold
-      
+
 
 // Action links
 //------------------------------------------------------------------------------
@@ -102,6 +108,8 @@ ul.action-links
   text-align: right
   &:hover
     z-index: 900
+
+.action-links
   li
     display: none
     line-height: 1
@@ -121,7 +129,7 @@ ul.action-links
 
 .actions-multiple
   &:hover
-    +border-radius(4px)
+    border-radius: 4px
   h2
     +hide-text
     +icon-sprite(select, true)
@@ -130,9 +138,10 @@ ul.action-links
     position: absolute
     right: 5px
     top: 10px
+
 .actions-single
-  ul.action-links li
+  .action-links li
     padding-right: 0
     margin-bottom: 0
   h2
-    +visually-hidden
+    @extend .visuallyhidden

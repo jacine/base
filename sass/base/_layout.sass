@@ -1,0 +1,41 @@
+.container, .limiter
+  @extend .pie-clearfix
+  position: relative
+
+.limiter
+  +container
+  // +susy-grid-background
+
+.block, .view
+  margin-top: 2em
+  +respond-to(desktop)
+    &:first-child
+      margin-top: 0
+  > .block, > .view
+    margin-top: 0
+
++respond-to(desktop)
+  .one-sidebar
+    .column-first,
+    .column-second
+      +span-columns(5)
+    .column-main
+      +span-columns(7)
+
+  .sidebar-first
+    .column-first
+      +omega
+
+  .sidebar-second
+    .column-second
+      +omega
+
+  .two-sidebars
+    .column-first
+      +span-columns(3)
+      +pull(6)
+    .column-main
+      +span-columns(6)
+      +push(3)
+    .column-second
+      +span-columns(3 omega)

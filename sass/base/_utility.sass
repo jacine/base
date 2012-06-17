@@ -6,18 +6,18 @@
 // https://gist.github.com/1478413
 
 @function move($columns, $context: false)
-  $move: columns($columns, $context) + gutter($context)
+  $move: span-columns($columns, $context) + gutter($context)
   @return $move
 
 // Mixin that includes the CSS necessary to push the columns into place.
-@mixin push($columns, $context: false)
-  $side-gutter: side-gutter()
+=push($columns, $context: false)
+  $side-gutter: $grid-padding
   @if $context
     $side-gutter: 0
   position: relative
-  left: $side-gutter + move($columns, $context)
+  left: $grid-padding + move($columns, $context)
 
-@mixin pull($columns, $context:false)
+=pull($columns, $context:false)
   position: relative
   left: 0 - move($columns, $context)
 
@@ -32,19 +32,18 @@
 // This is the Boilerplate version and overrides the .element-invisible version
 // that ships with Drupal because it's buggy.
 
-@mixin visually-hidden
+=visually-hidden
   border: 0
-  clip: rect(1px 1px 1px 1px) // IE6, IE7
-  clip: rect(1px, 1px, 1px, 1px)
+  clip: rect(0 0 0 0)
   height: 1px
   margin: -1px
   overflow: hidden
   padding: 0
-  position: absolute !important
+  position: absolute
   width: 1px
 
 
-// Visually hidden, but available to screenreaders and keyboard navigation.
+// Visually hidden, but available to screen readers and keyboard navigation.
 //------------------------------------------------------------------------------
 // Allows the element to be focusable when navigated to via the keyboard. This
 // is typically used for skip links.
@@ -52,8 +51,7 @@
 // This is the Boilerplate version and overrides the .element-focusable version
 // that ships with Drupal because it's buggy.
 
-
-@mixin visually-hidden-focusable
+=focusable
   clip: auto
   height: auto
   margin: 0
@@ -61,48 +59,32 @@
   position: static !important
   width: auto
 
-
-// Hide/Show
+// Hide
 //------------------------------------------------------------------------------
 
-@mixin hide
-  display: none
+=hidden
+  display: none !important
   visibility: hidden
 
-@mixin show($block: TRUE)
-  @if $block
-    display: block
-  @else
-    display: inline
-  visibility: visible
 
-
-// Compass mixin modified to include Drupal's active class.
-// Thanks @itsmisscs!
+// Override +link-colors mixin.
+// @see http://compass-style.org/reference/compass/typography/links/link_colors/
 //------------------------------------------------------------------------------
-
-@mixin link-colors($normal, $hover: false, $active: false, $visited: false, $focus: false) 
-  color: $normal
-  @if $visited 
-    &:visited 
-      color: $visited 
-  @if $focus 
-    &:focus 
-      color: $focus
-  @if $hover 
-    &:hover 
-      color: $hover
-  @if $active 
-    &.active,
-    &:active 
+=link-colors($normal, $hoverfocus: false, $active: false)
+  &, &:visited
+    color: $normal
+  @if $hoverfocus
+    &:hover, &:focus
+      color: $hoverfocus
+  @if $active
+    &:active, &.active, .active-trail &
       color: $active
 
-
-// Mixin to 
-// See https://gist.github.com/1215856 + http://vimeo.com/32611202 
+// Mixin to add nested media queries.
+// See https://gist.github.com/1215856 + http://vimeo.com/32611202
 //------------------------------------------------------------------------------
 
-@mixin respond-to($media)
+=respond-to($media)
   @if $media == handhelds
     @media only screen and (max-width: 479px)
       @content

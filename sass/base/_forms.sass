@@ -17,7 +17,7 @@ label
     +inline-block
 
 .form-control
-  +pie-clearfix
+  @extend .pie-clearfix
   margin: 1em 0
   position: relative
   td &
@@ -28,6 +28,7 @@ label
 .form-password,
 .form-select
   border: solid 1px #ddd
+  max-width: 100%
 
 .form-text,
 .form-textarea,
@@ -39,12 +40,12 @@ label
 input[type="file"]::-webkit-file-upload-button
   +background-clip(padding-box)
   background-color: $link
+  background-image: linear-gradient(darken($link, 20%), $link)
   border: none
-  +border-radius(3px)
+  border-radius: 3px
   color: #fff
   cursor: pointer
   +inline-block
-  +linear-gradient(darken($link, 20%), $link)
   line-height: 1
   margin: 0 0.5em 0 0
   outline: none
@@ -56,7 +57,7 @@ input[type="file"]::-webkit-file-upload-button
   &:focus,
   &:active
     background-color: darken($link, 20%)
-    +linear-gradient(darken($link, 30%), darken($link, 20%))
+    background-image: linear-gradient(darken($link, 30%), darken($link, 20%))
     color: #fff
     text-decoration: none
   &:first-child
@@ -75,3 +76,8 @@ input[type="file"]::-webkit-file-upload-button
 
 .form-required
   color: #c00
+
+input[disabled], select[disabled], textarea[disabled], button[disabled],
+input[disabled] + label
+  cursor: not-allowed
+
