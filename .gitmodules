@@ -1,6 +1,6 @@
 [submodule "lib/box-sizing"]
 	path = lib/box-sizing
-	url = https://github.com/adamnbowen/box-sizing-polyfill.git
+	url = https://github.com/Schepp/box-sizing-polyfill.git
 [submodule "lib/html5shiv"]
 	path = lib/html5shiv
 	url = https://github.com/aFarkas/html5shiv
