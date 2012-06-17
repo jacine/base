@@ -1,6 +1,6 @@
 name = Base
 core = 7.x
-description = Base theme
+description = A base theme by Jacine with HTML5 implementation, core bug fixes, Sass and leaner markup.
 
 stylesheets[screen][] = css/styles.css
 
