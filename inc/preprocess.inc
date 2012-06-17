@@ -146,11 +146,11 @@ function base_preprocess_block(&$vars) {
   // Provide some template suggestions based on ARIA roles.
   switch (isset($vars['attributes_array']['role'])) {
     case 'navigation':
-      $vars['theme_hook_suggestions'][] = 'block__nav';
+       array_unshift($vars['theme_hook_suggestions'], 'block__nav');
       break;
     case 'form':
     case 'search':
-      $vars['theme_hook_suggestions'][] = 'block__plain';
+      array_unshift($vars['theme_hook_suggestions'], 'block__plain');
       break;
     }
   }
@@ -160,12 +160,12 @@ function base_preprocess_block(&$vars) {
     if ($vars['block']->module == 'menu_block' || $vars['block']->module == 'menu' || $vars['block']->module == 'system' && in_array($vars['block']->delta, array_keys(menu_list_system_menus()))) {
       if ($vars['block']->region == 'navigation') {
         // The wrappers and hidden title are dealt with in page.tpl.php.
-        $vars['theme_hook_suggestions'][] = 'block__content_only';
+        array_unshift($vars['theme_hook_suggestions'], 'block__content_only');
       }
       else {
         // The block is placed in the header, so wrap it in <nav> and add .main-menu class.
-        $vars['classes_array'][] = 'main-menu';
-        $vars['theme_hook_suggestions'][] = 'block__nav';
+        array_unshift($vars['classes_array'], 'main-menu');
+        array_unshift($vars['theme_hook_suggestions'], 'block__nav');
       }
     }
   }
