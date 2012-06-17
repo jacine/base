@@ -19,7 +19,7 @@ $action_links = render($action_links);
 ?>
 <?php if ($messages): ?>
   <section class="console">
-    <h2 class="invisible"><?php print t('Console'); ?></h2>
+    <h2 class="visuallyhidden"><?php print t('Console'); ?></h2>
     <?php print $messages; ?>
   </section>
 <?php endif; ?>
@@ -45,7 +45,7 @@ $action_links = render($action_links);
 <?php if ($navigation): ?>
   <nav role="navigation" class="main-menu">
     <div class="container">
-      <h2 class="invisible"><?php print t('Main menu'); ?></h2>
+      <h2 class="visuallyhidden"><?php print t('Main menu'); ?></h2>
       <?php print $navigation; ?>
     </div>
   </nav>
