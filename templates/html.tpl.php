@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <?php print $styles; ?>
   <?php print $scripts; ?>
-  <!--[if lt IE 9]><script src="<?php $path . '/lib/html5shiv/dist/html5shiv.js'; ?>"></script><![endif]-->
+  <!--[if lt IE 9]>
+    <script src="<?php $path . '/lib/html5shiv/dist/html5shiv.js'; ?>"></script>
+  <![endif]-->
 </head>
 <body<?php print $body_attributes;?>>
   <a href="#main" class="visuallyhidden focusable skip-link"><?php print t('Skip to main content'); ?></a>

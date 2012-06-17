@@ -1,2 +1,27 @@
-@import partials/base
-@import partials/reset
+@import base
+@import normalize/normalize
+@import base/extends
+@import base/system
+
+// Box Sizing with Polyfill
+//------------------------------------------------------------------------------
+
+*
+  +box-sizing(border-box)
+  //*behavior: url("http://themery/sites/all/themes/base/lib/box-sizing/boxsizing.htc")
+
+
+// General
+//------------------------------------------------------------------------------
+
+img
+  height: auto
+  // Need to hack in an IE8 fix here.
+  // @see http://www.456bereastreet.com/archive/201202/using_max-width_on_images_can_make_them_disappear_in_ie8/
+  max-width: 100%
+  vertical-align: middle
+  // Prevent max-width from affecting Google Maps (from Twitter Bootstrap).
+  #map_canvas &
+    max-width: none
+
+

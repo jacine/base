@@ -1,0 +1,144 @@
+// Autocomplete suggestions
+//------------------------------------------------------------------------------
+
+#autocomplete
+  border: 1px solid
+  overflow: hidden
+  position: absolute
+  z-index: 100
+  ul
+    list-style: none
+    list-style-image: none
+    margin: 0
+    padding: 0
+  li
+    background: #fff
+    color: #000
+    cursor: default
+    white-space: pre
+
+
+// Autocomplete throbber
+//------------------------------------------------------------------------------
+
+.js
+  input
+    &.form-autocomplete
+      background-image: url("../../../../../misc/throbber.gif")
+      background-position: 100% 2px // LTR
+      background-repeat: no-repeat
+    &.throbbing
+      background-position: 100% -18px // LTR
+  fieldset.collapsed
+    border-bottom-width: 0
+    border-left-width: 0
+    border-right-width: 0
+    height: 1em
+    .fieldset-wrapper
+      display: none
+
+
+// AJAX progress throbber
+//------------------------------------------------------------------------------
+
+.ajax-progress
+  display: inline-block
+  .throbber
+    background: transparent url("../../../../../misc/throbber.gif") no-repeat 0px -18px
+    float: left // LTR
+    height: 15px
+    margin: 2px
+    width: 15px
+  .message
+    padding-left: 20px
+tr .ajax-progress .throbber
+  margin: 0 2px
+.ajax-progress-bar
+  width: 16em
+
+
+// Collapsible fieldsets
+//------------------------------------------------------------------------------
+
+fieldset.collapsible
+  position: relative
+  .fieldset-legend
+    display: block
+
+
+// Resizable textareas
+//------------------------------------------------------------------------------
+
+.resizable textarea
+  resize: vertical
+
+
+// Tabledrag
+//------------------------------------------------------------------------------
+
+.drag
+  cursor: move
+.draggable a.tabledrag-handle
+  cursor: move
+  float: left // LTR
+  height: 1.7em
+  margin: -0.4em 0 -0.4em -0.5em // LTR
+  padding: 0.42em 1.5em 0.42em 0.5em // LTR
+  text-decoration: none
+a.tabledrag-handle
+  &:hover
+    text-decoration: none
+  .handle
+    background: url("../../../../../misc/draggable.png") no-repeat 0 0
+    height: 13px
+    margin-top: 4px
+    width: 13px
+a.tabledrag-handle-hover .handle
+  background-position: 0 -20px
+div.indentation
+  float: left // LTR
+  height: 1.7em
+  margin: -0.4em 0.2em -0.4em -0.4em // LTR
+  padding: 0.42em 0 0.42em 0.6em // LTR
+  width: 20px
+  &.tree-child
+    background: url("../../../../../misc/tree.png") no-repeat 11px center // LTR
+  &.tree-child-last
+    background: url("../../../../../misc/tree-bottom.png") no-repeat 11px center
+  &.tree-child-horizontal
+    background: url("../../../../../misc/tree.png") no-repeat -11px center
+.tabledrag-toggle-weight-wrapper
+  text-align: right // LTR
+
+
+// Sticky table header
+//------------------------------------------------------------------------------
+
+table.sticky-header
+  background-color: #fff
+  margin-top: 0
+
+
+// Progress bar
+//------------------------------------------------------------------------------
+
+.progress
+  .bar
+    background-color: #fff
+    border: 1px solid
+  .filled
+    background-color: #000
+    height: 1.5em
+    width: 5px
+  .percentage
+    float: right // LTR
+
+
+// Inline containers
+//------------------------------------------------------------------------------
+
+.container-inline
+  > div, label
+    display: inline
+  .fieldset-wrapper
+    display: block
