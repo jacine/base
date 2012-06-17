@@ -80,6 +80,28 @@
     &:active, &.active, .active-trail &
       color: $active
 
+
+// Font-sizing
+// @todo Make this into a real project.
+//------------------------------------------------------------------------------
+
+// This works with the $base-font-size variable, so be sure to set it, without
+// units. +base-font-size needs to be set on <html>. It is the root for rem
+// calculations, and without it (unless the base is 16px) the calculations
+// will be incorrect.
+
+=base-font-size($pixels: $base-font-size)
+  font-size: $pixels + px
+  font-size: ($pixels / 16) * 100%
+
+// This function will take the desired pixel result and provide a pixel fallback
+// version as well as rem version. It uses the $base variable
+
+=font-size($pixels: $base-font-size)
+  font-size: $pixels + px
+  font-size: ($pixels / $base-font-size) + rem
+
+
 // Mixin to add nested media queries.
 // See https://gist.github.com/1215856 + http://vimeo.com/32611202
 //------------------------------------------------------------------------------
