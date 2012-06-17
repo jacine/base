@@ -170,6 +170,18 @@ function base_preprocess_block(&$vars) {
     }
   }
 
+  if ($vars['block']->module == 'views' && $vars['is_admin']) {
+    $remove = array(
+      'block',
+      'block-' . $vars['block']->module,
+      $vars['block_html_id'],
+    );
+    $vars['classes_array'][] = 'admin-only-wrapper';
+
+    $vars['classes_array'] = array_diff($vars['classes_array'], $remove);
+
+  }
+
 }
 
 /**
@@ -243,4 +255,93 @@ function base_preprocess_field(&$vars) {
     'clearfix',
   );
   $vars['classes_array'] = array_diff($vars['classes_array'], $classes_to_remove);
+}
+
+/**
+ * Implements template_preprocess_views_view().
+ */
+function base_preprocess_views_view(&$vars) {
+  $vars['tag'] = 'section';
+  $vars['header_tag'] = 'header';
+  $vars['footer_tag'] = 'footer';
+
+  if (!empty($vars['view_empty'])) {
+    // Add a class to the view. We're not wrapping this in yet another div.
+    $vars['classes_array'][] = 'view-empty';
+  }
+  else {
+    // Give it an empty string so it can just be printed. Simpler template.
+    $vars['empty'] = '';
+  }
+
+  // Remove some classes!
+  $remove[] = 'view-id-' . $vars['name'];
+  $remove[] = 'view-display-id-' . $vars['display_id'];
+  if (!empty($vars['dom_id'])) {
+    $remove[] = 'view-dom-id-' . $vars['dom_id'];
+  }
+
+  // Add the display class back, but with the human name.
+  $vars['classes_array'][] = 'view-' . $vars['name'] . '-display-' . $vars['display_id'];
+
+  // $did = $vars['display_id'];
+  // if (!empty($vars['view']->display[$did]->display_title)) {
+  //   $vars['display_title'] = drupal_html_class($vars['view']->display[$did]->display_title);
+  //   $vars['classes_array'][] = 'view-' . $vars['name'] . '-display-' . $vars['display_title'];
+
+  // }
+
+  $vars['classes_array'] = array_diff($vars['classes_array'], $remove);
+
+}
+
+/**
+ * Implements template_preprocess_views_view_fields().
+ */
+function base_preprocess_views_view_fields(&$vars) {
+  //dpm($vars);
+}
+
+/**
+ * Implements template_preprocess_views_view_list().
+ */
+function base_preprocess_views_view_list(&$vars) {
+
+  // Provide simple helper classes for views.
+  foreach ($vars['classes'] as $key => $value) {
+    // Give each row and .item class.
+    $vars['classes'][$key][] = 'item';
+
+    // Provide even/odd classes since IE8 doesn't support nth-child.
+    if (in_array('views-row-even', $value)) {
+      $vars['classes'][$key][] = 'even';
+    }
+    if (in_array('views-row-odd', $value)) {
+      $vars['classes'][$key][] = 'odd';
+    }
+
+    // Keep a simplified .last class because IE8 doesn't support :last-child.
+    if (in_array('views-row-last', $value)) {
+      $vars['classes'][$key][] = 'last';
+    }
+
+    // Get ready to remove a crap load of views classes.
+    $remove = array();
+
+    // Recreate a list of possible views-row-x results (up to 50 here) so
+    // they can be removed below.
+    for ($i=0; $i < 51; $i++) {
+     $remove[] = 'views-row-' . $i;
+    }
+
+    // Add first/last/odd/even classes to this of those to remove.
+    $remove[] = 'views-row';
+    $remove[] = 'views-row-first';
+    $remove[] = 'views-row-last';
+    $remove[] = 'views-row-odd';
+    $remove[] = 'views-row-even';
+
+    // Get rid of them once and for all!
+    $vars['classes_array'][$key] = implode(' ', array_diff($vars['classes'][$key], $remove));
+  }
 }
