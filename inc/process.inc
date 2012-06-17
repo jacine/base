@@ -23,6 +23,22 @@ function base_process_html(&$vars) {
 }
 
 /**
+ * Implements hook_process_page().
+ */
+function base_process_page(&$vars) {
+  if (isset($vars['suppress_title'])) {
+    // Prevent the title from being printed in both the node and page template
+    // when a full node is being viewed. In order to have properly sectioned HTML5
+    // markup for nodes, we must ensure the title is printed inside the node
+    // template, as opposed to the page.tpl.php template.
+    if (!empty($vars['node']) && $vars['page'] && !arg(2)) {
+      $vars['title'] = '';
+    }
+  }
+}
+
+
+/**
  * Implements hook_process_html_tag().
  */
 function base_process_html_tag(&$vars) {
