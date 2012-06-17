@@ -44,6 +44,11 @@ function base_preprocess_html(&$vars) {
     $vars['classes_array'][] = 'no-tabs';
   }
 
+  if ($vars['view'] = views_get_page_view()) {
+    $display = $vars['view']->current_display;
+    $vars['classes_array'][] = 'page-view-' . drupal_html_class($vars['view']->name) . '-' . $display;
+  }
+
   // The default body classes are way too verbose for what we need here.
   // This should really be optional, but since it's not, need to rebuild in
   // in order to remove them.
@@ -62,12 +67,16 @@ function base_preprocess_html(&$vars) {
  * Implements template_preprocess_page().
  */
 function base_preprocess_page(&$vars) {
-  // Prevent the title from being printed in both the node and page template
-  // when a full node is being viewed. In order to have properly sectioned HTML5
-  // markup for nodes, we must ensure the title is printed inside the node
-  // template, as opposed to the page.tpl.php template.
-  if (!empty($vars['node']) && $vars['page'] && !arg(2)) {
-    $vars['title'] = '';
+
+  // Add a template suggestion for views pages, and allow the header of the
+  // view to be printed in page.tpl.php
+  if ($vars['view'] = views_get_page_view()) {
+    array_unshift($vars['theme_hook_suggestions'], 'page__view');
+    // Make the view header available. This will print in page.tpl.php.
+    $display = $vars['view']->current_display;
+    if (!empty($vars['view']->display[$display]->display_options['header']['area']['content'])) {
+      $vars['view_header'] = filter_xss_admin($vars['view']->display[$display]->display_options['header']['area']['content']);
+    }
   }
 }
 
