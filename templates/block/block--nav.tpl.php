@@ -41,6 +41,13 @@
  * @see template_process()
  */
 ?>
-<?php print render($title_prefix); ?>
-<?php print render($title_suffix); ?>
-<?php print $content; ?>
+<nav<?php print $attributes; ?>>
+  <?php print render($title_prefix); ?>
+  <?php print render($title_suffix); ?>
+  <?php if ($block->subject): ?>
+    <h2<?php print $title_attributes; ?>><?php print $block->subject; ?></h2>
+  <?php endif;?>
+  <?php if (!empty($content_attributes)): ?><div<?php print $content_attributes; ?>><?php endif; ?>
+    <?php print $content; ?>
+  <?php if (!empty($content_attributes)): ?></div><?php endif; ?>
+</nav>

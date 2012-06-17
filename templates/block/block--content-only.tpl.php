@@ -41,13 +41,8 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php print render($title_prefix); ?>
-  <?php if (!empty($content_attributes)): ?><div<?php print $content_attributes; ?>><?php endif; ?>
-    <?php if ($block->subject): ?>
-      <h2<?php print $title_attributes; ?>><?php print $block->subject ?></h2>
-    <?php endif;?>
-    <?php print render($title_suffix); ?>
-    <?php print $content; ?>
-  <?php if (!empty($content_attributes)): ?></div><?php endif; ?>
-</div>
+<?php if ($is_admin): ?><div class="admin-wrapper"><?php endif; ?>
+<?php print render($title_prefix); ?>
+<?php print render($title_suffix); ?>
+<?php print $content; ?>
+<?php if ($is_admin): ?></div><?php endif; ?>

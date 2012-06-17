@@ -41,7 +41,7 @@
  * @see template_process()
  */
 ?>
-<nav class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<div<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
   <?php if (!empty($content_attributes)): ?><div<?php print $content_attributes; ?>><?php endif; ?>
     <?php if ($block->subject): ?>
@@ -50,4 +50,4 @@
     <?php print render($title_suffix); ?>
     <?php print $content; ?>
   <?php if (!empty($content_attributes)): ?></div><?php endif; ?>
-</nav>
+</div>
