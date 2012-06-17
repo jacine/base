@@ -1,4 +1,4 @@
-@import partials/base
+@import base
 
 // Tablesort
 //------------------------------------------------------------------------------
@@ -52,36 +52,9 @@ a.tabledrag-toggle-weight
 //------------------------------------------------------------------------------
 #toolbar-home
   float: left
-div#toolbar
-  div.toolbar-shortcuts ul.menu li
-    span.icon
-      background: #444 sprite-url !important
-      width: 17px
-      height: 24px
-    a[href="/node/add"],
-    a[href="/admin/content"]
-      padding-left: 24px
-      position: relative
-      &:before
-        content: ""
-        display: block
-        position: absolute
-        width: 24px
-        height: 24px
-        left: 4px
-    a[href="/node/add"]:before
-      +icon-sprite(create-edit)
-      +icon-sprite-position(create-edit, 0px, 4px)
-    a[href="/admin/content"]:before
-      +icon-sprite(search-white)
-      +icon-sprite-position(search-white, 0px, 4px)
-  a#edit-shortcuts
-    +icon-sprite(edit)
-    +icon-sprite-position(edit, 0px, 9px)
-    padding-left: 24px
 
 
-// Admin lists
+// Miscellaneous
 //------------------------------------------------------------------------------
 .admin-list
   a

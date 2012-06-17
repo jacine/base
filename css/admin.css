@@ -1,5 +1,5 @@
-.icon-sprite, .ascending, .descending, a.tabledrag-handle .handle, tr.drag a.tabledrag-handle .handle, a.tabledrag-handle-hover .handle, div#toolbar div.toolbar-shortcuts ul.menu li a[href="/node/add"]:before, div#toolbar div.toolbar-shortcuts ul.menu li a[href="/admin/content"]:before, div#toolbar a#edit-shortcuts {
-  background: url('../img/icon-s895b624d63.png') no-repeat;
+.icon-sprite, .ascending, .descending, a.tabledrag-handle .handle, tr.drag a.tabledrag-handle .handle, a.tabledrag-handle-hover .handle {
+  background: url('../img/icon-s69f8637a0d.png') no-repeat;
 }
 
 .sort {
@@ -8,22 +8,22 @@
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
-  text-indent: -119988px;
+  text-indent: 110%;
+  white-space: nowrap;
   overflow: hidden;
-  text-align: left;
 }
 .sort {
   *display: inline;
 }
 
 .ascending {
-  background-position: 0 0;
+  background-position: 0 -4750px;
   height: 16px;
   width: 16px;
 }
 
 .descending {
-  background-position: 0 -948px;
+  background-position: 0 -5066px;
   height: 16px;
   width: 16px;
 }
@@ -60,7 +60,7 @@ tr.drag a.tabledrag-handle .handle {
 }
 
 a.tabledrag-handle-hover .handle {
-  background-position: 0 -2538px;
+  background-position: 0 -3170px;
 }
 
 tr.draggable td:first-child {
@@ -78,39 +78,6 @@ a.tabledrag-toggle-weight {
 
 #toolbar-home {
   float: left;
-}
-
-div#toolbar div.toolbar-shortcuts ul.menu li span.icon {
-  background: #444444 sprite-url !important;
-  width: 17px;
-  height: 24px;
-}
-div#toolbar div.toolbar-shortcuts ul.menu li a[href="/node/add"],
-div#toolbar div.toolbar-shortcuts ul.menu li a[href="/admin/content"] {
-  padding-left: 24px;
-  position: relative;
-}
-div#toolbar div.toolbar-shortcuts ul.menu li a[href="/node/add"]:before,
-div#toolbar div.toolbar-shortcuts ul.menu li a[href="/admin/content"]:before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  left: 4px;
-}
-div#toolbar div.toolbar-shortcuts ul.menu li a[href="/node/add"]:before {
-  background-position: 0 -1590px;
-  background-position: 0 -1586px;
-}
-div#toolbar div.toolbar-shortcuts ul.menu li a[href="/admin/content"]:before {
-  background-position: 0 -4434px;
-  background-position: 0 -4430px;
-}
-div#toolbar a#edit-shortcuts {
-  background-position: 0 -2854px;
-  background-position: 0 -2845px;
-  padding-left: 24px;
 }
 
 .admin-list a {
