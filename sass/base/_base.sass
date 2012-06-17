@@ -16,11 +16,11 @@ $focus: darken($link, 10%)
 // @todo Add colors for default shadings/borders.
 
 // Grid
-$total-columns: 12
-$column-width: 60px
-$gutter-width: 20px
-$grid-padding: 20px
-$show-grid-backgrounds: false
+$total-columns: 12 !default
+$column-width: 60px !default
+$gutter-width: 20px !default
+$grid-padding: 20px !default
+$show-grid-backgrounds: false !default
 
 
 // Compass
@@ -31,6 +31,8 @@ $show-grid-backgrounds: false
 @import compass/reset/utilities
 @import compass/typography/vertical_rhythm
 @import compass/css3
+
+// Note: At least one sprite image is needed in each theme in order to compile.
 @import icon/*.png
 
 
