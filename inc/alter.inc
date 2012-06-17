@@ -61,11 +61,5 @@ function base_page_alter(&$page) {
   if (!empty($page['content']['system_main'])) {
     $page['content']['system_main']['#theme_wrappers'] = array_diff($page['content']['system_main']['#theme_wrappers'], array('block'));
   }
-}
 
-/**
- * Implements hook_library_alter().
- */
-function base_library_alter(&$libraries, $module) {
-  unset($libraries['drupal.textarea']);
 }
