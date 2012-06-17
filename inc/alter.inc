@@ -2,9 +2,9 @@
 
 /**
  * Implements hook_html_head_alter().
- * - Simplify the meta charset element.
  */
 function base_html_head_alter(&$head_elements) {
+  // Simplify the meta charset element.
   $head_elements['system_meta_content_type']['#attributes'] = array(
     'charset' => 'utf-8',
   );
@@ -45,13 +45,19 @@ function base_css_alter(&$css) {
       $css[$path]['media'] = 'screen';
     }
   }
+
+  // Load the Contextual CSS last, whether overridden or not.
+  if (isset($css['modules/contextual/contextual.css'])) {
+    $css['modules/contextual/contextual.css']['group'] = CSS_THEME;
+    $css['modules/contextual/contextual.css']['weight'] = 100;
+  }
 }
 
 /**
  * Implements hook_page_alter().
  */
 function base_page_alter(&$page) {
-  // Remove all the region wrappers.
+  // Remove all the region wrappers, except for page_top and page_bottom.
   foreach (element_children($page) as $key => $region) {
     if (!empty($page[$region]['#theme_wrappers']) && !in_array($region, array('page_top', 'page_bottom'))) {
       $page[$region]['#theme_wrappers'] = array_diff($page[$region]['#theme_wrappers'], array('region'));
