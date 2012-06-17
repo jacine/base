@@ -18,7 +18,7 @@ function base_process_html(&$vars) {
   // in base_preprocess_html().
   $vars['html_attributes'] = drupal_attributes($vars['html_attributes_array']);
   if ($vars['classes']) {
-    $vars['body_attributes'] = ' class="' . $vars['classes'] . '"' . $vars['attributes'];
+    $vars['body_attributes'] = $vars['attributes'];
   }
 }
 
