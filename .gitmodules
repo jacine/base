@@ -4,6 +4,3 @@
 [submodule "lib/html5shiv"]
 	path = lib/html5shiv
 	url = https://github.com/aFarkas/html5shiv
-[submodule "lib/normalize"]
-	path = lib/normalize
-	url = https://github.com/necolas/normalize.css.git
