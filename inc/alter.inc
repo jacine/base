@@ -4,9 +4,106 @@
  * Implements hook_html_head_alter().
  */
 function base_html_head_alter(&$head_elements) {
+  global $theme;
+  // Get the path to the active theme (not necessarily this theme).
+  $path = drupal_get_path('theme', $theme);
+
   // Simplify the meta charset element.
   $head_elements['system_meta_content_type']['#attributes'] = array(
     'charset' => 'utf-8',
+  );
+
+  // Use Chrome Frame.
+  $head_elements['base_chrome_frame'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'X-UA-Compatible',
+      'content' => 'IE=edge,chrome=1'
+    ),
+  );
+
+  // Mobile-friendly Viewport settings.
+  $head_elements['base_handheld_friendly'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'HandheldFriendly',
+      'content' => 'True',
+    ),
+  );
+  $head_elements['base_mobile_optimized'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'MobileOptimized',
+      'content' => '320',
+    ),
+  );
+  $head_elements['base_viewport'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'viewport',
+      'content' => 'width=device-width,initial-scale=1.0',
+    ),
+  );
+
+  // Activate ClearType for Mobile IE.
+  $head_elements['base_cleartype'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'cleartype',
+      'content' => 'on',
+    ),
+  );
+
+  // Apple Touch Icons. See: http://mathiasbynens.be/notes/touch-icons
+  // Note: When a subtheme is active, this pulls the icons from the subtheme,
+  // not the base theme. Make sure these files exist.
+
+  // For third-generation iPad with high-resolution Retina display.
+  $head_elements['base_apple_touch_144'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'apple-touch-icon-precomposed',
+      'sizes' => '144x144',
+      'href' => $path . '/img/apple/apple-touch-icon-144x144-precomposed.png'
+    ),
+  );
+  // iPhone 4 with high-resolution Retina display.
+  $head_elements['base_apple_touch_114'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'apple-touch-icon-precomposed',
+      'sizes' => '114x114',
+      'href' => $path . '/img/apple/apple-touch-icon-114x114-precomposed.png'
+    ),
+  );
+  // First and second generation iPads.
+  $head_elements['base_apple_touch_72'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'apple-touch-icon-precomposed',
+      'sizes' => '72x72',
+      'href' => $path . '/img/apple/apple-touch-icon-72x72-precomposed.png'
+    ),
+  );
+  // Fallback...
+  // Non-Retina iPhone, iPod Touch, and Android 2.1+ devices.
+  // Also be sure to include apple-touch-icon.png. iOS 1 and Blackberry don't
+  // support the precomposed option,
+  $head_elements['base_apple_touch'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'apple-touch-icon-precomposed',
+      'href' => $path . '/img/apple/apple-touch-icon-precomposed.png'
+    ),
   );
 }
 
