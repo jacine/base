@@ -7,7 +7,7 @@
 function base_preprocess_html(&$vars) {
   // Create a variable for the path to the theme.
   $vars['path'] = drupal_get_path('theme', 'base');
-  
+
   // Initializes attributes which are specific to the html and body elements.
   $vars['html_attributes_array'] = array();
   $vars['body_attributes_array'] = array();
@@ -15,7 +15,7 @@ function base_preprocess_html(&$vars) {
   // HTML element attributes.
   $vars['html_attributes_array']['lang'] = $GLOBALS['language']->language;
   $vars['html_attributes_array']['dir'] = $GLOBALS['language']->direction ? 'rtl' : 'ltr';
-  
+
   if (module_exists('rdf')) {
     // Adds RDF namespace prefix bindings in the form of an RDFa 1.1 prefix
     // attribute inside the html element.
@@ -67,7 +67,6 @@ function base_preprocess_html(&$vars) {
  * Implements template_preprocess_page().
  */
 function base_preprocess_page(&$vars) {
-
   // Add a template suggestion for views pages, and allow the header of the
   // view to be printed in page.tpl.php
   if ($vars['view'] = views_get_page_view()) {
@@ -88,15 +87,15 @@ function base_preprocess_block(&$vars) {
   $vars['classes_array'][] = $vars['block_html_id'];
 
   // Hide the block titles in the header and navigation regions by default.
-  if ($vars['block']->region == 'header' || $vars['block']->region == 'navigation') {
-    $vars['title_attributes_array']['class'][] = 'visuallyhidden';
-  }
+  // if ($vars['block']->region == 'header' || $vars['block']->region == 'navigation') {
+  //   $vars['title_attributes_array']['class'][] = 'visuallyhidden';
+  // }
 
   // Add default "content" class to the block template. Removing this in a sub-theme
   // for example, will prevent a div from printing, unless there are RDF attributes.
   // @see block.tpl.php provided by this theme.
-  $vars['content_attributes_array']['class'][] = 'content';
-  
+  // $vars['content_attributes_array']['class'][] = 'content';
+
   // Add ARIA roles to core blocks.
   $roles = array(
     'complementary' => array(
@@ -200,7 +199,7 @@ function base_preprocess_node(&$vars) {
   // Remove the default classes. This is all IE6 stuff.
   $classes_to_remove = array(drupal_html_class('node-' . $node->type), 'node-promoted', 'node-sticky', 'node-unpublished', 'node-teaser', 'node-preview');
   $vars['classes_array'] = array_diff($vars['classes_array'], $classes_to_remove);
-  
+
   // Recreate some of them without the 'node-' prefix.
   // Gather node classes.
   $vars['classes_array'][] = drupal_html_class($node->type);
@@ -228,7 +227,7 @@ function base_preprocess_node(&$vars) {
 function base_preprocess_field(&$vars) {
   // Default field wrapper.
   $vars['tag'] = 'div';
-  
+
   // Field label wrappers.
   switch ($vars['element']['#field_name']) {
     case 'field_tags':
@@ -297,13 +296,6 @@ function base_preprocess_views_view(&$vars) {
 
   $vars['classes_array'] = array_diff($vars['classes_array'], $remove);
 
-}
-
-/**
- * Implements template_preprocess_views_view_fields().
- */
-function base_preprocess_views_view_fields(&$vars) {
-  //dpm($vars);
 }
 
 /**

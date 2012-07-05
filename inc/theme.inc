@@ -8,7 +8,7 @@
 function base_breadcrumb($vars) {
   if (!empty($vars['breadcrumb']) && count($vars['breadcrumb']) > 1) {
     $heading = t('Breadcrumb Navigation');
-    return '<nav class="breadcrumbs"><h2 class="visuallyhidden">' . $heading . '</h2>\n' . implode(' / ', $vars['breadcrumb']) . '</nav>';
+    return '<nav class="breadcrumbs"><h2 class="visuallyhidden">' . $heading . "</h2>\n" . implode(' / ', $vars['breadcrumb']) . '</nav>';
   }
 }
 
