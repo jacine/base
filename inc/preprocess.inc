@@ -190,7 +190,10 @@ function base_preprocess_node(&$vars) {
   $node = $vars['node'];
 
   if ($vars['view_mode']) {
+    // Add a class indicating the current view mode.
     $vars['classes_array'][] = 'view-mode-' . drupal_html_class($vars['view_mode']);
+    // Allow different templates per view mode.
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
   }
 
   // Add article ARIA role.
