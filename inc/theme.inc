@@ -110,8 +110,22 @@ function base_links($vars) {
       $i++;
 
       $class = array();
-      // Use the array key as class name.
-      $class[] = drupal_html_class($key);
+
+      // This fixes a bug caused by running drupal_html_class($key), which
+      // could potentially be something like "menu-345 active". Running
+      // drupal_html_class() on that turns it into menu-345-active, which is
+      // wrong. We need "menu-123 active". This may break stuff elsewhere, so
+      // need to test it out a bit.
+      $class_friendly_key = explode(' ', $key);
+      if (is_array($class_friendly_key)) {
+        $class = array_merge($class_friendly_key, $class);
+      }
+      else {
+        // Use the array key as class name.
+        $class[] = drupal_html_class($key);
+      }
+
+
       // Add odd/even, first, and last classes.
       $class[] = ($i % 2 ? 'odd' : 'even');
       if ($i == 1) {
@@ -188,8 +202,9 @@ function base_form($vars) {
 }
 
 /**
- * Overrides theme_item_list()
- *
+ * Overrides theme_item_list().
+ * - Use an early D8 version of this. It includes bug fixes.
+ * - Remove the div.item-list wrapper.
  */
 function base_item_list($variables) {
   $items = $variables['items'];
@@ -257,7 +272,180 @@ function base_item_list($variables) {
     if ($title !== '') {
       $title = '<h3>' . $title . '</h3>';
     }
-    $output = '<div class="item-list">' . $title . $output . '</div>';
+    $output = $title . $output;
+  }
+
+  return $output;
+}
+
+/**
+ * Overrides base_pager().
+ * - Simplify the list item classes.
+ * - Remove the arrows from the labels.
+ * - Add rel="next/prev" attributes.
+ * - Add an empty <a> element to the active link.
+ * - Change the "current" class to "active".
+ * - Remove first/last classes. theme_item_list() handles this already.
+ */
+function base_pager($variables) {
+  $tags = $variables['tags'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $quantity = $variables['quantity'];
+  global $pager_page_array, $pager_total;
+
+  // Calculate various markers within this pager piece:
+  // Middle is used to "center" pages around the current page.
+  $pager_middle = ceil($quantity / 2);
+  // current is the page we are currently paged to
+  $pager_current = $pager_page_array[$element] + 1;
+  // first is the first page listed by this pager piece (re quantity)
+  $pager_first = $pager_current - $pager_middle + 1;
+  // last is the last page listed by this pager piece (re quantity)
+  $pager_last = $pager_current + $quantity - $pager_middle;
+  // max is the maximum page number
+  $pager_max = $pager_total[$element];
+  // End of marker calculations.
+
+  // Prepare for generation loop.
+  $i = $pager_first;
+  if ($pager_last > $pager_max) {
+    // Adjust "center" if at end of query.
+    $i = $i + ($pager_max - $pager_last);
+    $pager_last = $pager_max;
+  }
+  if ($i <= 0) {
+    // Adjust "center" if at start of query.
+    $pager_last = $pager_last + (1 - $i);
+    $i = 1;
+  }
+  // End of generation loop preparation.
+
+  $li_first = theme('pager_first', array('text' => (isset($tags[0]) ? $tags[0] : t('First')), 'element' => $element, 'parameters' => $parameters));
+  $li_previous = theme('pager_previous', array('text' => (isset($tags[1]) ? $tags[1] : t('Previous')), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+  $li_next = theme('pager_next', array('text' => (isset($tags[3]) ? $tags[3] : t('Next')), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+  $li_last = theme('pager_last', array('text' => (isset($tags[4]) ? $tags[4] : t('Last')), 'element' => $element, 'parameters' => $parameters));
+
+  if ($pager_total[$element] > 1) {
+    if ($li_first) {
+      $items[] = array(
+        'data' => $li_first,
+      );
+    }
+    if ($li_previous) {
+      $items[] = array(
+        'class' => array('previous'),
+        'data' => $li_previous,
+      );
+    }
+
+    // When there is more than one page, create the pager list.
+    if ($i != $pager_max) {
+      if ($i > 1) {
+        $items[] = array(
+          'class' => array('ellipsis'),
+          'data' => '…',
+        );
+      }
+      // Now generate the actual pager piece.
+      for (; $i <= $pager_last && $i <= $pager_max; $i++) {
+        if ($i < $pager_current) {
+          $items[] = array(
+            'class' => array('item'),
+            'data' => theme('pager_previous', array('text' => $i, 'element' => $element, 'interval' => ($pager_current - $i), 'parameters' => $parameters)),
+          );
+        }
+        if ($i == $pager_current) {
+          $items[] = array(
+            'class' => array('active'),
+            'data' => '<a>' . $i . '</a>',
+          );
+        }
+        if ($i > $pager_current) {
+          $items[] = array(
+            'class' => array('item'),
+            'data' => theme('pager_next', array('text' => $i, 'element' => $element, 'interval' => ($i - $pager_current), 'parameters' => $parameters)),
+          );
+        }
+      }
+      if ($i < $pager_max) {
+        $items[] = array(
+          'class' => array('ellipsis'),
+          'data' => '…',
+        );
+      }
+    }
+    // End generation.
+    if ($li_next) {
+      $items[] = array(
+        'class' => array('next'),
+        'data' => $li_next,
+      );
+    }
+    if ($li_last) {
+      $items[] = array(
+        'data' => $li_last,
+      );
+    }
+    return '<div class="pagination" role="navigation"><h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
+      'items' => $items,
+      'attributes' => array('class' => array('pager')),
+    )) . '</div>';
+  }
+}
+
+/**
+ * Overrides theme_pager_next().
+ * - Adds rel="next" to the link.
+ */
+function base_pager_next($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $interval = $variables['interval'];
+  $parameters = $variables['parameters'];
+  global $pager_page_array, $pager_total;
+  $output = '';
+
+  // If we are anywhere but the last page
+  if ($pager_page_array[$element] < ($pager_total[$element] - 1)) {
+    $page_new = pager_load_array($pager_page_array[$element] + $interval, $element, $pager_page_array);
+    // If the next page is the last page, mark the link as such.
+    if ($page_new[$element] == ($pager_total[$element] - 1)) {
+      $output = theme('pager_last', array('text' => $text, 'element' => $element, 'parameters' => $parameters));
+    }
+    // The next page is not the last page.
+    else {
+      $output = theme('pager_link', array('text' => $text, 'page_new' => $page_new, 'element' => $element, 'parameters' => $parameters));
+    }
+  }
+
+  return $output;
+}
+
+/**
+ * Overrides theme_pager_previous().
+ * - Adds rel="prev" to the link.
+ */
+function base_pager_previous($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $interval = $variables['interval'];
+  $parameters = $variables['parameters'];
+  global $pager_page_array;
+  $output = '';
+
+  // If we are anywhere but the first page
+  if ($pager_page_array[$element] > 0) {
+    $page_new = pager_load_array($pager_page_array[$element] - $interval, $element, $pager_page_array);
+
+    // If the previous page is the first page, mark the link as such.
+    if ($page_new[$element] == 0) {
+      $output = theme('pager_first', array('text' => $text, 'element' => $element, 'parameters' => $parameters));
+    }
+    // The previous page is not the first page.
+    else {
+      $output = theme('pager_link', array('text' => $text, 'page_new' => $page_new, 'element' => $element, 'parameters' => $parameters));
+    }
   }
 
   return $output;

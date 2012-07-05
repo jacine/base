@@ -1,5 +1,9 @@
 .icon-sprite, .ascending, .descending, a.tabledrag-handle .handle, tr.drag a.tabledrag-handle .handle, a.tabledrag-handle-hover .handle {
-  background: url('../img/icon-s69f8637a0d.png') no-repeat;
+  background: url('../img/icon-s7476dcb369.png') no-repeat;
+}
+
+.white-sprite {
+  background: url('../img/icon/white-s4f2cdf1030.png') no-repeat;
 }
 
 .sort {
@@ -17,13 +21,13 @@
 }
 
 .ascending {
-  background-position: 0 -4750px;
+  background-position: 0 -736px;
   height: 16px;
   width: 16px;
 }
 
 .descending {
-  background-position: 0 -5066px;
+  background-position: 0 -802px;
   height: 16px;
   width: 16px;
 }
@@ -50,17 +54,17 @@ a.tabledrag-handle:hover {
   text-decoration: none;
 }
 a.tabledrag-handle .handle {
-  background-position: 0 -2222px;
+  background-position: 0 -274px;
   height: 16px;
   width: 16px;
   margin-top: 0;
 }
 tr.drag a.tabledrag-handle .handle {
-  background-position: 0 -1906px;
+  background-position: 0 -208px;
 }
 
 a.tabledrag-handle-hover .handle {
-  background-position: 0 -3170px;
+  background-position: 0 -472px;
 }
 
 tr.draggable td:first-child {
