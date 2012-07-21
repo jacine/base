@@ -1,9 +1,9 @@
-[submodule "lib/box-sizing"]
-	path = lib/box-sizing
+[submodule "sass/libraries/box-sizing"]
+	path = sass/libraries/box-sizing
 	url = https://github.com/Schepp/box-sizing-polyfill.git
-[submodule "lib/html5shiv"]
-	path = lib/html5shiv
+[submodule "js/libraries/html5shiv"]
+	path = js/libraries/html5shiv
 	url = https://github.com/aFarkas/html5shiv
-[submodule "lib/normalize"]
-	path = lib/normalize
+[submodule "sass/libraries/normalize"]
+	path = sass/libraries/normalize
 	url = https://github.com/jacine/normalize.css.git
