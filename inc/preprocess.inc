@@ -25,11 +25,6 @@ function base_preprocess_html(&$vars) {
     }
   }
 
-  // Add the admin stylesheet.
-  if ($vars['is_admin']) {
-    drupal_add_css($vars['path'] . '/css/admin.css', array('group' => CSS_THEME, 'media' => 'screen'));
-  }
-
   // Add body classes indicating tabs.
   if (menu_primary_local_tasks() && menu_secondary_local_tasks()) {
     $vars['classes_array'][] = 'with-tabs';
