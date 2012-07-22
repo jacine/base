@@ -479,11 +479,13 @@ table {
 }
 
 .inline-block, .indentation, .sort, .draggable a.tabledrag-handle {
-  display: -moz-inline-stack;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
-  zoom: 1;
+}
+.inline-block, .indentation, .sort, .draggable a.tabledrag-handle {
   *display: inline;
 }
 
@@ -518,9 +520,9 @@ table {
 }
 
 .hide-text, .sort {
-  text-indent: -119988px;
+  text-indent: 110%;
+  white-space: nowrap;
   overflow: hidden;
-  text-align: left;
 }
 
 .base-sprite, .indentation.tree-child, .indentation.tree-child-horizontal, .indentation.tree-child-last, .ascending, .descending, a.tabledrag-handle .handle, tr.drag a.tabledrag-handle .handle, a.tabledrag-handle-hover .handle {
@@ -547,7 +549,7 @@ table {
 }
 
 .js input.form-autocomplete {
-  background: inherit url("../../../../../misc/throbber.gif") no-repeat 100% 2px;
+  background: inherit url("../img/throbber.gif") no-repeat 100% 2px;
 }
 .js input.throbbing {
   background-position: 100% -18px;
@@ -566,7 +568,7 @@ table {
   display: inline-block;
 }
 .ajax-progress .throbber {
-  background: transparent url("../../../../../misc/throbber.gif") no-repeat 0px -18px;
+  background: transparent url("../img/throbber.gif") no-repeat 0px -18px;
   float: left;
   height: 15px;
   margin: 2px;
