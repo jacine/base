@@ -1,27 +1,3 @@
-// SUSY ADD-ONS
-//------------------------------------------------------------------------------
-
-// Function to calculate units to move based on number of columns and current
-// context. See +push and +pull mixins below. Modified version of
-// https://gist.github.com/1478413
-
-@function move($columns, $context: false)
-  $move: span-columns($columns, $context) + gutter($context)
-  @return $move
-
-// Mixin that includes the CSS necessary to push the columns into place.
-=push($columns, $context: false)
-  $side-gutter: $grid-padding
-  @if $context
-    $side-gutter: 0
-  position: relative
-  left: $grid-padding + move($columns, $context)
-
-=pull($columns, $context:false)
-  position: relative
-  left: 0 - move($columns, $context)
-
-
 // Visually hidden, but available for screen readers.
 //------------------------------------------------------------------------------
 // Used for information required for screen-reader users to understand and use
@@ -82,7 +58,6 @@
 
 
 // Font-sizing
-// @todo Make this into a real project.
 //------------------------------------------------------------------------------
 
 // This works with the $base-font-size variable, so be sure to set it, without

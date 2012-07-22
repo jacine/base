@@ -469,23 +469,21 @@ table {
   border-spacing: 0;
 }
 
-.clearfix {
+.clearfix, ul, nav ul, ol, nav ol {
   *zoom: 1;
 }
-.clearfix:after {
+.clearfix:after, ul:after, ol:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.inline-block {
-  display: -moz-inline-box;
-  -moz-box-orient: vertical;
+.inline-block, .indentation, .sort, .draggable a.tabledrag-handle {
+  display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
-}
-.inline-block {
+  zoom: 1;
   *display: inline;
 }
 
@@ -494,7 +492,7 @@ table {
   opacity: 0.5;
 }
 
-.element-invisible, .visuallyhidden, .invisible {
+.visually-hidden, .element-invisible, .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -504,7 +502,8 @@ table {
   position: absolute;
   width: 1px;
 }
-.element-invisible.focusable:active, .element-invisible.focusable:focus, .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus, .invisible.focusable:active, .invisible.focusable:focus {
+
+.focusable:active, .element-focusable:active, .focusable:focus, .element-focusable:focus {
   clip: auto;
   height: auto;
   margin: 0;
@@ -513,9 +512,19 @@ table {
   width: auto;
 }
 
-.element-hidden {
+.hidden {
   display: none !important;
   visibility: hidden;
+}
+
+.hide-text, .sort {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.base-sprite, .indentation.tree-child, .indentation.tree-child-horizontal, .indentation.tree-child-last, .ascending, .descending, a.tabledrag-handle .handle, tr.drag a.tabledrag-handle .handle, a.tabledrag-handle-hover .handle {
+  background: url('../img/base-s8b859ec3e1.png') no-repeat;
 }
 
 #autocomplete {
@@ -538,9 +547,7 @@ table {
 }
 
 .js input.form-autocomplete {
-  background-image: url("../../../../../misc/throbber.gif");
-  background-position: 100% 2px;
-  background-repeat: no-repeat;
+  background: inherit url("../../../../../misc/throbber.gif") no-repeat 100% 2px;
 }
 .js input.throbbing {
   background-position: 100% -18px;
@@ -588,51 +595,67 @@ fieldset.collapsible .fieldset-legend {
   resize: vertical;
 }
 
-.drag {
-  cursor: move;
+.indentation {
+  width: 20px;
+}
+.indentation.tree-child, .indentation.tree-child-horizontal {
+  background-position: 0 -823px;
+}
+.indentation.tree-child-last {
+  background-position: 0 -936px;
+}
+
+.ascending {
+  background-position: 0 -727px;
+  height: 16px;
+  width: 16px;
+}
+
+.descending {
+  background-position: 0 -775px;
+  height: 16px;
+  width: 16px;
+}
+
+th.active {
+  white-space: nowrap;
 }
 
 .draggable a.tabledrag-handle {
-  cursor: move;
-  float: left;
-  height: 1.7em;
-  margin: -0.4em 0 -0.4em -0.5em;
-  padding: 0.42em 1.5em 0.42em 0.5em;
-  text-decoration: none;
+  margin: 0 5px 0 0;
+  padding: 0;
+  vertical-align: bottom;
 }
 
-a.tabledrag-handle:hover {
+a.tabledrag-handle, a.tabledrag-handle:hover, a.tabledrag-handle:focus, a.tabledrag-handle:active {
   text-decoration: none;
 }
 a.tabledrag-handle .handle {
-  background: url("../../../../../misc/draggable.png") no-repeat 0 0;
-  height: 13px;
-  margin-top: 4px;
-  width: 13px;
+  background-position: 0 -343px;
+  height: 16px;
+  width: 16px;
+  margin-top: 0;
+}
+tr.drag a.tabledrag-handle .handle {
+  background-position: 0 -295px;
 }
 
 a.tabledrag-handle-hover .handle {
-  background-position: 0 -20px;
+  background-position: 0 -487px;
 }
 
-div.indentation {
-  float: left;
-  height: 1.7em;
-  margin: -0.4em 0.2em -0.4em -0.4em;
-  padding: 0.42em 0 0.42em 0.6em;
-  width: 20px;
+tr.draggable td:first-child {
+  white-space: nowrap;
 }
-div.indentation.tree-child {
-  background: url("../../../../../misc/tree.png") no-repeat 11px center;
-}
-div.indentation.tree-child-last {
-  background: url("../../../../../misc/tree-bottom.png") no-repeat 11px center;
-}
-div.indentation.tree-child-horizontal {
-  background: url("../../../../../misc/tree.png") no-repeat -11px center;
+
+a.tabledrag-toggle-weight {
+  margin-right: 0;
 }
 
 .tabledrag-toggle-weight-wrapper {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  margin-bottom: 1em;
   text-align: right;
 }
 
@@ -674,4 +697,9 @@ img {
 }
 #map_canvas img {
   max-width: none;
+}
+
+ul, nav ul, ol, nav ol {
+  list-style: none;
+  padding: 0;
 }

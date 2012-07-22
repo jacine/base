@@ -11,11 +11,15 @@
   cursor: not-allowed
   opacity: 0.5
 
-.element-invisible, .visuallyhidden, .invisible
+.visually-hidden
   +visually-hidden
-  &.focusable
-    &:active, &:focus
-      +focusable
 
-.element-hidden
+.focusable
+  &:active, &:focus
+    +focusable
+
+.hidden
   +hidden
+
+.hide-text
+  +hide-text

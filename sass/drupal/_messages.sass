@@ -1,8 +1,8 @@
 .messages
-  +pie-clearfix
+  @extend .clearfix
   background-color: #bedb82
-  line-height: 1.6
   border-bottom: solid 1px rgba(137, 179, 51, 0.8)
+  line-height: 1.6
   padding: 20px
   + .messages
     border-top: none
@@ -13,13 +13,13 @@
     text-decoration: none
 
 .error
-  background-color: #F14A29
+  background-color: #f14a29
   color: #fff
   h2
     background-color: rgba(201, 38, 13, 0.8)
 
 .warning
-  background-color: #FFE375
+  background-color: #ffe375
   border-color: rgba(236, 188, 0, 0.8)
   color: #111
   h2

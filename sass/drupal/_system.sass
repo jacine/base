@@ -24,9 +24,7 @@
 .js
   input
     &.form-autocomplete
-      background-image: url("../../../../../misc/throbber.gif")
-      background-position: 100% 2px // LTR
-      background-repeat: no-repeat
+      background: inherit url("../img/throbber.gif") no-repeat 100% 2px // LTR
     &.throbbing
       background-position: 100% -18px // LTR
   fieldset.collapsed
@@ -44,7 +42,7 @@
 .ajax-progress
   display: inline-block
   .throbber
-    background: transparent url("../../../../../misc/throbber.gif") no-repeat 0px -18px
+    background: transparent url("../img/throbber.gif") no-repeat 0px -18px
     float: left // LTR
     height: 15px
     margin: 2px
@@ -76,40 +74,63 @@ fieldset.collapsible
 // Tabledrag
 //------------------------------------------------------------------------------
 
-.drag
-  cursor: move
+.indentation
+  @extend .inline-block
+  width: 20px
+  &.tree-child, &.tree-child-horizontal
+    +base-sprite(tree)
+  &.tree-child-last
+    +base-sprite(tree-bottom)
+
+
+// Tablesort
+//------------------------------------------------------------------------------
+
+.sort
+  @extend .inline-block
+  @extend .hide-text
+
+.ascending
+  +base-sprite(arrow-down, true)
+
+.descending
+  +base-sprite(arrow-up, true)
+
+th.active
+  white-space: nowrap
+
+
+// Tabledrag
+//------------------------------------------------------------------------------
+
 .draggable a.tabledrag-handle
-  cursor: move
-  float: left // LTR
-  height: 1.7em
-  margin: -0.4em 0 -0.4em -0.5em // LTR
-  padding: 0.42em 1.5em 0.42em 0.5em // LTR
-  text-decoration: none
+  @extend .inline-block
+  margin: 0 5px 0 0
+  padding: 0
+  vertical-align: bottom
+
 a.tabledrag-handle
-  &:hover
+  &, &:hover, &:focus, &:active
     text-decoration: none
   .handle
-    background: url("../../../../../misc/draggable.png") no-repeat 0 0
-    height: 13px
-    margin-top: 4px
-    width: 13px
-a.tabledrag-handle-hover .handle
-  background-position: 0 -20px
-div.indentation
-  float: left // LTR
-  height: 1.7em
-  margin: -0.4em 0.2em -0.4em -0.4em // LTR
-  padding: 0.42em 0 0.42em 0.6em // LTR
-  width: 20px
-  &.tree-child
-    background: url("../../../../../misc/tree.png") no-repeat 11px center // LTR
-  &.tree-child-last
-    background: url("../../../../../misc/tree-bottom.png") no-repeat 11px center
-  &.tree-child-horizontal
-    background: url("../../../../../misc/tree.png") no-repeat -11px center
-.tabledrag-toggle-weight-wrapper
-  text-align: right // LTR
+    +base-sprite(crosshair-gray, true)
+    margin-top: 0
+    tr.drag &
+      +base-sprite(crosshair-blue)
 
+a.tabledrag-handle-hover .handle
+  +base-sprite(crosshair)
+
+tr.draggable td:first-child
+  white-space: nowrap
+
+a.tabledrag-toggle-weight
+  margin-right: 0
+
+.tabledrag-toggle-weight-wrapper
+  +font-size(11)
+  margin-bottom: 1em
+  text-align: right
 
 // Sticky table header
 //------------------------------------------------------------------------------
@@ -142,3 +163,12 @@ table.sticky-header
     display: inline
   .fieldset-wrapper
     display: block
+
+
+// Accessibility
+//------------------------------------------------------------------------------
+
+.element-invisible
+  @extend .visually-hidden
+.element-focusable
+  @extend .focusable

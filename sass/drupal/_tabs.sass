@@ -2,10 +2,10 @@
 //------------------------------------------------------------------------------
 
 .tasks
-  @extend .pie-clearfix
+  @extend .clearfix
   position: relative
   min-height: 32px
-  * html .tasks
+  * html &
     height: 32px
 
 nav.tabs
@@ -14,7 +14,7 @@ nav.tabs
 
 
 ul.tabs
-  @extend .pie-clearfix
+  @extend .clearfix
   margin: 0
   padding: 0
 
@@ -71,7 +71,7 @@ ul.primary
 //------------------------------------------------------------------------------
 
 ul.secondary
-  font-size: 0.923em
+  +font-size(12)
   padding: 1em 0
 
 .secondary
@@ -117,21 +117,21 @@ ul.action-links
     padding: 0 8px 0 0
     &:first-child,
     &.first
-      display: inline-block
+      @extend .inline-block
   &:hover li,
   .active &
     display: block
     margin-bottom: 4px
   a
     +link-colors(#fff)
-    +inline-block
+    @extend .inline-block
     padding: 4px 0
 
 .actions-multiple
   &:hover
     border-radius: 4px
   h2
-    +hide-text
+    @extend .hide-text
     background: inherit url('../img/icon/white/select.png') no-repeat 50% 50%
     margin: 0
     padding: 0
@@ -144,4 +144,4 @@ ul.action-links
     padding-right: 0
     margin-bottom: 0
   h2
-    @extend .visuallyhidden
+    @extend .visually-hidden

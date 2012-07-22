@@ -4,47 +4,44 @@
 fieldset
   border: none
   padding: 0
-  margin: 0 0 1em 0
+  margin: 1em 0
 
-legend
+legend, label
   font-weight: bold
 
 label
   display: block
-  font-weight: bold
   &.option
+    @extend .inline-block
     font-weight: normal
-    +inline-block
 
-.form-control
-  +pie-clearfix
+.form-item
+  @extend .clearfix
   margin: 1em 0
   position: relative
   td &
-    margin: 0
+    margin-top: 0
+    margin-bottom: 0
+
+.form-text, .form-textarea, .form-password
+  border: solid 1px $border
+  padding: 0.5em
 
 .form-text,
 .form-textarea,
 .form-password,
 .form-select
-  border: solid 1px #ddd
   max-width: 100%
 
-.form-text,
-.form-textarea,
-.form-password
-  padding: 0.375em
-
 .form-item .description
-  color: #585858
-  font-size: 0.923em
-  margin-top: 4px
+  color: $gray
+  margin-top: 0.5em
 
 .form-actions
   padding: 1em 0
 
 .form-required
-  color: #c00
+  color: $error
 
 input[disabled], select[disabled], textarea[disabled], button[disabled],
 input[disabled] + label

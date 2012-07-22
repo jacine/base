@@ -1,18 +1,20 @@
-@import base/base
-@import normalize/normalize
-@import base/extends
-@import base/system
+@import libraries/normalize/normalize
+@import base-theme
+@import drupal/system
 
 // Box Sizing with Polyfill
 //------------------------------------------------------------------------------
 
 *
   +box-sizing(border-box)
-  //*behavior: url("http://themery/sites/all/themes/base/lib/box-sizing/boxsizing.htc")
+  //*behavior: url("http://yoursite.com/sites/all/themes/base/lib/box-sizing/boxsizing.htc")
 
 
 // General
 //------------------------------------------------------------------------------
+
+.visuallyhidden
+  @extend .visually-hidden
 
 img
   height: auto
@@ -24,4 +26,9 @@ img
   #map_canvas &
     max-width: none
 
+ul, ol
+  &, nav &
+    @extend .clearfix
+    list-style: none
+    padding: 0
 

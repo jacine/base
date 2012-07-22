@@ -1,8 +1,8 @@
 .block-search, .search-form
   text-align: center
   .container-inline
-    +pie-clearfix
-    +inline-block
+    @extend .clearfix
+    @extend .inline-block
     position: relative
     width: 100%
     max-width: 320px
@@ -14,7 +14,7 @@
   input.form-submit
     background: inherit url('../img/icon/search.png') no-repeat 50% 50%
     +reset-box-model
-    +hide-text
+    @extend .hide-text
     border: none
     height: 32px
     width: 32px
