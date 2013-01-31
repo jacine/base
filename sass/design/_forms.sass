@@ -1,0 +1,30 @@
+
+fieldset
+  border: solid 1px $border
+  padding: 10px
+  margin: $vertical-spacing 0
+  fieldset
+    &:first-child
+      margin-top: 0
+    &:last-child
+      margin-bottom: 0
+    &:only-child
+      margin-bottom: 0
+      margin-top: 0
+
+.vertical-tabs fieldset
+  background-color: $box
+
+legend
+  @extend %heading
+  float: left
+  line-height: 2.5
+  margin: 0
+  width: 100%
+  clear: both
+  a
+    @extend %inline-block
+    text-decoration: none
+
+.description
+  @extend %small

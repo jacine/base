@@ -1,0 +1,14 @@
+
+#header, #footer, #main, #content
+  @extend %clearfix
+  position: relative
+
+.container
+  +container
+
+@media only screen and (min-width: 767px)
+  .one-sidebar
+    .column-main
+      +span-columns(8,12)
+    .column-first
+      +span-columns(4 omega, 12)

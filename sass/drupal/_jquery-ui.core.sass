@@ -18,15 +18,15 @@
   @extend .visually-hidden
 
 .ui-helper-reset
+  @extend %no-bullets
   +reset-box-model
-  +no-bullets
-  +font-size
+  font-size: modular-scale(0)
   line-height: $line-height
   outline: 0
   text-decoration: none
 
 .ui-helper-clearfix
-  @extend .clearfix
+  @extend %clearfix
 
 .ui-helper-zfix
   width: 100%
@@ -50,7 +50,7 @@
 .ui-icon
   background-repeat: no-repeat
   display: block
-  @extend .hide-text
+  @extend %hide-text
 
 
 // Misc Visuals

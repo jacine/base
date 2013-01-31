@@ -7,8 +7,7 @@
   position: absolute
   z-index: 100
   ul
-    list-style: none
-    list-style-image: none
+    @extend %no-bullets
     margin: 0
     padding: 0
   li
@@ -25,15 +24,26 @@
   input
     &.form-autocomplete
       background: inherit url("../img/throbber.gif") no-repeat 100% 2px // LTR
-    &.throbbing
-      background-position: 100% -18px // LTR
-  fieldset.collapsed
-    border-bottom-width: 0
-    border-left-width: 0
-    border-right-width: 0
-    height: 1em
-    .fieldset-wrapper
-      display: none
+      &.throbbing
+        background-position: 100% -18px // LTR
+
+
+// Collapsible fieldsets
+//------------------------------------------------------------------------------
+
+.js
+  [data-component="collapse"]
+    &[data-state="closed"]
+      > .content
+        display: none
+
+
+// States API
+//------------------------------------------------------------------------------
+
+.js
+  [data-component="states"][data-state="closed"]
+    display: none
 
 
 // AJAX progress throbber
@@ -55,15 +65,6 @@ tr .ajax-progress .throbber
   width: 16em
 
 
-// Collapsible fieldsets
-//------------------------------------------------------------------------------
-
-fieldset.collapsible
-  position: relative
-  .fieldset-legend
-    display: block
-
-
 // Resizable textareas
 //------------------------------------------------------------------------------
 
@@ -74,63 +75,65 @@ fieldset.collapsible
 // Tabledrag
 //------------------------------------------------------------------------------
 
+a.tabledrag-handle
+  @extend %inline-block
+  line-height: 1
+  text-decoration: none
+  vertical-align: bottom
+  body.drag &, &:focus, &:active
+    cursor: all-scroll
+  &:before
+    @extend %ss-move
+  &, &:after
+    @extend %inline-block
+    content: " "
+  td &
+    + .form-control, + .form-component
+      float: right
+
+
+body.drag
+  cursor: all-scroll
+
+tr.draggable td:first-child
+  white-space: nowrap
+tr.drag
+  outline: 2px dashed darken($border, 20)
+  td
+    border: 0
+
+a.tabledrag-toggle-weight
+  margin-right: 0
+
+.tabledrag-toggle-weight-wrapper
+  margin-bottom: 1em
+  text-align: right
+
 .indentation
-  @extend .inline-block
+  @extend %inline-block
   width: 20px
   &.tree-child, &.tree-child-horizontal
-    +base-sprite(tree)
+    +base-icon-sprite('tree')
   &.tree-child-last
-    +base-sprite(tree-bottom)
+    +base-icon-sprite('tree-bottom')
 
 
 // Tablesort
 //------------------------------------------------------------------------------
 
 .sort
-  @extend .inline-block
-  @extend .hide-text
+  @extend %inline-block
+  @extend %hide-text
 
 .ascending
-  +base-sprite(arrow-down, true)
+  +base-icon-sprite(arrow-down, true)
 
 .descending
-  +base-sprite(arrow-up, true)
+  +base-icon-sprite(arrow-up, true)
 
 th.active
   white-space: nowrap
 
-
-// Tabledrag
-//------------------------------------------------------------------------------
-
-.draggable a.tabledrag-handle
-  @extend .inline-block
-  margin: 0 5px 0 0
-  padding: 0
-  vertical-align: bottom
-
-a.tabledrag-handle
-  &, &:hover, &:focus, &:active
-    text-decoration: none
-  .handle
-    +base-sprite(crosshair-gray, true)
-    margin-top: 0
-    tr.drag &
-      +base-sprite(crosshair-blue)
-
-a.tabledrag-handle-hover .handle
-  +base-sprite(crosshair)
-
-tr.draggable td:first-child
-  white-space: nowrap
-
-a.tabledrag-toggle-weight
-  margin-right: 0
-
-.tabledrag-toggle-weight-wrapper
-  +font-size(11)
-  margin-bottom: 1em
-  text-align: right
 
 // Sticky table header
 //------------------------------------------------------------------------------

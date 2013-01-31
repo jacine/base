@@ -52,7 +52,6 @@ function base_menu_local_tasks(&$vars) {
   if ($output) {
     return '<nav class="tabs" role="navigation">' . $output . '</nav>';
   }
-
 }
 
 /**
@@ -176,29 +175,13 @@ function base_links($vars) {
  */
 function base_more_link($vars) {
   $title = !empty($vars['title']) ? t($vars['title']) : t('More');
-  return l($title, $vars['url'], array(
+  return l('More', $vars['url'], array(
     'attributes' => array(
-      'title' => !empty($vars['title']) ? $vars['title'] : t('More'),
-      'class' => 'more-link ' . drupal_html_class($vars['title']),
+      'title' => $title,
+      'class' => array('more-link', 'more-' . drupal_html_class($title)),
       )
     )
   );
-}
-
-/**
- * Overrides theme_form().
- * - Removes the wrapper DIV.
- */
-function base_form($vars) {
-  $element = $vars['element'];
-  if (isset($element['#action'])) {
-    $element['#attributes']['action'] = drupal_strip_dangerous_protocols($element['#action']);
-  }
-  element_set_attributes($element, array('method', 'id'));
-  if (empty($element['#attributes']['accept-charset'])) {
-    $element['#attributes']['accept-charset'] = "UTF-8";
-  }
-  return '<form' . drupal_attributes($element['#attributes']) . '>' . $element['#children'] . '</form>';
 }
 
 /**
@@ -206,11 +189,11 @@ function base_form($vars) {
  * - Use an early D8 version of this. It includes bug fixes.
  * - Remove the div.item-list wrapper.
  */
-function base_item_list($variables) {
-  $items = $variables['items'];
-  $title = (string) $variables['title'];
-  $type = $variables['type'];
-  $list_attributes = $variables['attributes'];
+function base_item_list($vars) {
+  $items = $vars['items'];
+  $title = (string) $vars['title'];
+  $type = $vars['type'];
+  $list_attributes = $vars['attributes'];
 
   $output = '';
   if ($items) {
@@ -287,11 +270,11 @@ function base_item_list($variables) {
  * - Change the "current" class to "active".
  * - Remove first/last classes. theme_item_list() handles this already.
  */
-function base_pager($variables) {
-  $tags = $variables['tags'];
-  $element = $variables['element'];
-  $parameters = $variables['parameters'];
-  $quantity = $variables['quantity'];
+function base_pager($vars) {
+  $tags = $vars['tags'];
+  $element = $vars['element'];
+  $parameters = $vars['parameters'];
+  $quantity = $vars['quantity'];
   global $pager_page_array, $pager_total;
 
   // Calculate various markers within this pager piece:
@@ -341,12 +324,12 @@ function base_pager($variables) {
 
     // When there is more than one page, create the pager list.
     if ($i != $pager_max) {
-      if ($i > 1) {
-        $items[] = array(
-          'class' => array('ellipsis'),
-          'data' => '…',
-        );
-      }
+    //   if ($i > 1) {
+    //     $items[] = array(
+    //       'class' => array('ellipsis'),
+    //       'data' => '…',
+    //     );
+    //   }
       // Now generate the actual pager piece.
       for (; $i <= $pager_last && $i <= $pager_max; $i++) {
         if ($i < $pager_current) {
@@ -368,12 +351,12 @@ function base_pager($variables) {
           );
         }
       }
-      if ($i < $pager_max) {
-        $items[] = array(
-          'class' => array('ellipsis'),
-          'data' => '…',
-        );
-      }
+      // if ($i < $pager_max) {
+      //   $items[] = array(
+      //     'class' => array('ellipsis'),
+      //     'data' => '…',
+      //   );
+      // }
     }
     // End generation.
     if ($li_next) {
@@ -398,11 +381,11 @@ function base_pager($variables) {
  * Overrides theme_pager_next().
  * - Adds rel="next" to the link.
  */
-function base_pager_next($variables) {
-  $text = $variables['text'];
-  $element = $variables['element'];
-  $interval = $variables['interval'];
-  $parameters = $variables['parameters'];
+function base_pager_next($vars) {
+  $text = $vars['text'];
+  $element = $vars['element'];
+  $interval = $vars['interval'];
+  $parameters = $vars['parameters'];
   global $pager_page_array, $pager_total;
   $output = '';
 
@@ -426,11 +409,11 @@ function base_pager_next($variables) {
  * Overrides theme_pager_previous().
  * - Adds rel="prev" to the link.
  */
-function base_pager_previous($variables) {
-  $text = $variables['text'];
-  $element = $variables['element'];
-  $interval = $variables['interval'];
-  $parameters = $variables['parameters'];
+function base_pager_previous($vars) {
+  $text = $vars['text'];
+  $element = $vars['element'];
+  $interval = $vars['interval'];
+  $parameters = $vars['parameters'];
   global $pager_page_array;
   $output = '';
 

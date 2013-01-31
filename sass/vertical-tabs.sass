@@ -1,0 +1,47 @@
+@import theme
+
+.vertical-tabs
+  @extend %clearfix
+  background-color: rgba(0,0,0,0.025)
+  border: solid 1px $border
+
+  ul.vertical-tabs-list
+    display: block
+    list-style: none
+    padding: 0
+    margin: 0
+    li
+      border-right: solid 1px $border
+      padding: 0.5em
+      margin: 0
+      &:focus
+        outline: 0
+      &:not(:last-child)
+        border-bottom: solid 1px $border
+      &:hover, &:focus, &.selected
+        background-color: rgba(0,0,0,0.05)
+      &.selected
+        border-right: 0
+    a
+      display: block
+      text-decoration: none
+    .summary
+      color: black
+      display: block
+
+  .vertical-tabs-pane
+    display: none
+    border: 0
+    margin: 0
+    padding: 1rem
+    > .content
+      display: block
+    > legend
+      display: none
+    &[data-state="open"]
+      display: block
+    input, textarea
+      max-width: 100%
+
+@media only screen and (min-width: 569px)
+

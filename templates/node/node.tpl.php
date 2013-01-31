@@ -4,6 +4,10 @@
 hide($content['comments']);
 hide($content['links']);
 
+if (!empty($content['field_tags'])) {
+  $content['field_tags']['#label_display'] = 'hidden';
+}
+
 ?>
 <article<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
@@ -21,7 +25,11 @@ hide($content['links']);
         <span class="time"><?php print format_date($node->created, 'custom', 'g:m a'); ?></span>
       </time>
       <?php print $user_picture; ?>
-      <?php print render($content['field_tags']); ?>
+      <?php if ($tags = render($content['field_tags'])): ?>
+      <div class="tags">
+        <?php print $tags; ?>
+      </div>
+      <?php endif; ?>
     </footer>
   <?php endif; ?>
   <div class="content"<?php print $content_attributes; ?>>

@@ -68,21 +68,17 @@ $action_links = render($action_links);
       <?php print render($title_suffix); ?>
       <?php if ($tabs || $action_links): ?>
         <div class="tasks">
-        <?php print $tabs; ?>
-        <?php if ($action_links): ?>
-          <div class="actions actions-<?php print ($actions == 1) ? 'single' : 'multiple'; ?>">
-            <div class="wrap">
-              <h2><?php print t('Page actions'); ?></h2>
-              <ul class="action-links">
-                <?php print $action_links; ?>
-              </ul>
+          <?php print $tabs; ?>
+          <?php if ($action_links): ?>
+            <div class="actions" role="navigation" <?php print ($actions > 1) ? 'data-toggle="true"' : ''; ?>>
+              <h2 class="visuallyhidden"><?php print t('Page actions'); ?></h2>
+              <ul class="toggle-content"><?php print $action_links; ?></ul>
             </div>
-          </div>
-        <?php endif; ?>
+          <?php endif; ?>
         </div>
       <?php endif; ?>
       <?php print $help; ?>
-      <div id="content">
+      <div id="content" class="main-content">
         <?php print $content; ?>
       </div>
       <?php print $feed_icons; ?>

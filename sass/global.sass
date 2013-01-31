@@ -1,13 +1,12 @@
 @import libraries/normalize/normalize
-@import base-theme
+@import theme
 @import drupal/system
 
-// Box Sizing with Polyfill
+// Box Sizing
 //------------------------------------------------------------------------------
 
-*
+*, *:after,*:before
   +box-sizing(border-box)
-  //*behavior: url("http://yoursite.com/sites/all/themes/base/lib/box-sizing/boxsizing.htc")
 
 
 // General
@@ -18,17 +17,11 @@
 
 img
   height: auto
-  // Need to hack in an IE8 fix here.
-  // @see http://www.456bereastreet.com/archive/201202/using_max-width_on_images_can_make_them_disappear_in_ie8/
   max-width: 100%
   vertical-align: middle
   // Prevent max-width from affecting Google Maps (from Twitter Bootstrap).
   #map_canvas &
     max-width: none
 
-ul, ol
-  &, nav &
-    @extend .clearfix
-    list-style: none
-    padding: 0
-
+.clearfix
+  @extend %clearfix

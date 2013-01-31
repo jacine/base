@@ -25,23 +25,19 @@ function base_preprocess_html(&$vars) {
     }
   }
 
-  // Add body classes indicating tabs.
+  // Add body classes indicating whether or not tabs are present.
   if (menu_primary_local_tasks() && menu_secondary_local_tasks()) {
     $vars['classes_array'][] = 'with-tabs';
-  }
-  elseif (menu_primary_local_tasks()) {
-    $vars['classes_array'][] = 'with-tabs tabs-primary';
-  }
-  elseif (menu_secondary_local_tasks()) {
-    $vars['classes_array'][] = 'with-tabs tabs-secondary';
   }
   else {
     $vars['classes_array'][] = 'no-tabs';
   }
 
-  if ($vars['view'] = views_get_page_view()) {
-    $display = $vars['view']->current_display;
-    $vars['classes_array'][] = 'page-view-' . drupal_html_class($vars['view']->name) . '-' . $display;
+  if (module_exists('views')) {
+    if ($vars['view'] = views_get_page_view()) {
+      $display = $vars['view']->current_display;
+      $vars['classes_array'][] = 'page-view-' . drupal_html_class($vars['view']->name) . '-' . $display;
+    }
   }
 
   // The default body classes are way too verbose for what we need here.
@@ -64,13 +60,18 @@ function base_preprocess_html(&$vars) {
 function base_preprocess_page(&$vars) {
   // Add a template suggestion for views pages, and allow the header of the
   // view to be printed in page.tpl.php
-  if ($vars['view'] = views_get_page_view()) {
-    array_unshift($vars['theme_hook_suggestions'], 'page__view');
-    // Make the view header available. This will print in page.tpl.php.
-    $display = $vars['view']->current_display;
-    if (!empty($vars['view']->display[$display]->display_options['header']['area']['content'])) {
-      $vars['view_header'] = filter_xss_admin($vars['view']->display[$display]->display_options['header']['area']['content']);
+  if (module_exists('views')) {
+    if ($vars['view'] = views_get_page_view()) {
+      array_unshift($vars['theme_hook_suggestions'], 'page__view');
+      // Make the view header available. This will print in page.tpl.php.
+      $display = $vars['view']->current_display;
+      if (!empty($vars['view']->display[$display]->display_options['header']['area']['content'])) {
+        $vars['view_header'] = filter_xss_admin($vars['view']->display[$display]->display_options['header']['area']['content']);
+      }
     }
+  }
+  if (theme_get_setting('node_title_location') == 'node') {
+    $vars['suppress_node_title'] = TRUE;
   }
 }
 
@@ -152,13 +153,16 @@ function base_preprocess_block(&$vars) {
   // Find the main navigation and change the template based on region placement.
   if ($vars['block']->region == 'navigation' || $vars['block']->region == 'header') {
     if ($vars['block']->module == 'menu_block' || $vars['block']->module == 'menu' || $vars['block']->module == 'system' && in_array($vars['block']->delta, array_keys(menu_list_system_menus()))) {
+
+      // Make the block titles invisible.
+      $vars['title_attributes_array']['class'][] = 'visuallyhidden';
+
       if ($vars['block']->region == 'navigation') {
         // The wrappers and hidden title are dealt with in page.tpl.php.
         array_unshift($vars['theme_hook_suggestions'], 'block__content_only');
       }
       else {
-        // The block is placed in the header, so wrap it in <nav> and add .main-menu class.
-        array_unshift($vars['classes_array'], 'main-menu');
+        // The block is placed in the header, so wrap it in <nav>.
         array_unshift($vars['theme_hook_suggestions'], 'block__nav');
       }
     }

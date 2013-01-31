@@ -1,5 +1,4 @@
 ul.pager
-  +clearfix
   line-height: 2
   list-style: none
   margin: 1em 0
@@ -13,11 +12,11 @@ ul.pager
     list-style: none
     margin: 0
     padding: 0
-    &.first
+    &.first, &:only-child
       border-left-width: 1px
 
   a, .pager-current, .pager-ellipsis
     padding: 0 12px
   a
     text-decoration: none
-    @extend .inline-block
+    @extend %inline-block

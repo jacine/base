@@ -1,13 +1,25 @@
 // Helpers
 //------------------------------------------------------------------------------
 
-.clearfix
+%clearfix
   +pie-clearfix
 
-.inline-block
+%inline-block
   +inline-block
 
-.disabled
+%hide-text
+  +hide-text
+
+%no-bullets
+  +no-bullets
+
+%ellipsis
+  +ellipsis
+
+%inline-block
+  +inline-block
+
+%disabled
   cursor: not-allowed
   opacity: 0.5
 
@@ -17,9 +29,3 @@
 .focusable
   &:active, &:focus
     +focusable
-
-.hidden
-  +hidden
-
-.hide-text
-  +hide-text

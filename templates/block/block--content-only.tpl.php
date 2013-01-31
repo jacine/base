@@ -41,8 +41,6 @@
  * @see template_process()
  */
 ?>
-<?php if ($is_admin): ?><div class="admin-wrapper"><?php endif; ?>
 <?php print render($title_prefix); ?>
 <?php print render($title_suffix); ?>
 <?php print $content; ?>
-<?php if ($is_admin): ?></div><?php endif; ?>

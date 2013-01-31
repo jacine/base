@@ -32,7 +32,7 @@ function base_process_page(&$vars) {
     // markup for nodes, we must ensure the title is printed inside the node
     // template, as opposed to the page.tpl.php template.
     if (!empty($vars['node']) && $vars['page'] && !arg(2)) {
-      unset($vars['title']);
+      $vars['title'] = '';
     }
   }
 }

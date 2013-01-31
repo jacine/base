@@ -1,0 +1,76 @@
+
+// Extends
+//------------------------------------------------------------------------------
+
+%heading
+  font-family: $font-headings
+  font-weight: bold
+  text-transform: uppercase
+
+%small
+  color: #585858
+  font-size: modular-scale(2) * 0.5
+  line-height: 1.2
+
+%box
+  @extend %clearfix
+  margin-top: modular-scale(1)
+  margin-bottom: modular-scale(2)
+
+%inline-block-list
+  &, li
+    @extend %inline-block
+
+.links
+  @extend %inline-block-list
+
+.node > .links li
+  background-color: rgba(0,0,0,0.05)
+  padding: modular-scale(0) * 0.5 modular-scale(0)
+  margin-right: modular-scale(0) * 0.5
+
+
+// Basics
+//------------------------------------------------------------------------------
+
+body
+  background: $background
+  color: $color
+
+a
+  text-decoration: none
+
+// Headings
+//------------------------------------------------------------------------------
+
+#{headings()}
+  margin-bottom: modular-scale(0)
+  margin-top: modular-scale(0)
+  text-rendering: optimizeLegibility
+
+h1, h2
+  text-transform: uppercase
+
+h1
+  font-size: modular-scale(5)
+h2
+  font-size: modular-scale(4)
+h3, .block h2
+  font-size: modular-scale(3)
+h4
+  font-size: modular-scale(2)
+h5, h6
+  font-size: modular-scale(1)
+
+
+// Containers
+//------------------------------------------------------------------------------
+
+article, .main .block, .links
+  @extend %box
+
+
+// Design Elements
+//------------------------------------------------------------------------------
+
+@import design/forms

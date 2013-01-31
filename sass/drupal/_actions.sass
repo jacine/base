@@ -1,0 +1,44 @@
+.actions
+  background-color: $link
+  border-radius: 3px
+  position: absolute
+  top: -3px
+  right: 0
+  .no-tabs &
+    position: relative
+    float: left
+    margin: 20px 0
+  a
+    +link-colors(#fff, #fff, #fff)
+    display: block
+    padding: 6px 10px
+    &:focus, &:hover
+      outline: 0
+
+  button
+    +base-icon-sprite(select, false, 4, 5)
+    +box-sizing(content-box)
+    @extend %hide-text
+    background-color: darken($link, 5%)
+    border: 0
+    display: block
+    border-radius: 0 3px 3px 0
+    padding: 0
+    margin: 0
+    position: absolute
+    right: 0
+    top: 0
+    width: 24px
+    height: 28px
+  ul, li
+    margin: 0
+
+  &[data-toggle="true"]
+    a
+      padding-right: 36px
+    li:not(:first-child)
+      display: none
+    &.open
+      li
+        display: block
+

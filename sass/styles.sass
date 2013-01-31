@@ -1,41 +1,57 @@
-@import base-theme
+@import theme
 
-@import layout/default
-@import general/forms
+@import layout
+@import drupal/forms
 @import drupal/messages
 @import drupal/tabs
+@import drupal/actions
+@import drupal/book
 @import drupal/pagers
 @import drupal/search
-
+@import drupal/menus
+@import drupal/polls
 
 // General
 //---------------------------------------------------------------------------
 
 html
-  +base-font-size()
+  font-size: 85%
 
 body
   font-family: $sans-serif
-  +font-size(13)
-  line-height: $line-height
   padding: 0
   margin: 0
   word-wrap: break-word
+  min-width: $min-width
 
 pre, code, kbd, samp
   font-family: $monospace
-  +font-size(11)
+  font-size: modular-scale(0) * 0.9
 
 a
-  +link-colors($link, $hover, $active)
+  +link-colors($link, $link-hover, $link-active)
+
+ul
+  +no-bullets
+ul, li
+  +reset-box-model
+
+
+.block
+  @extend %clearfix
 
 
 // Tables
 //---------------------------------------------------------------------------
+
 table
+  margin: 20px 0
   width: 100%
+  max-width: 100%
+table, tr, td, th
+  border-color: $border
 table, td, th
-  border: solid 1px $border
+  border-style: solid
   border-width: 1px 0 0 1px
 thead
   background-color: #f5f5f5
@@ -46,60 +62,34 @@ td, th
   vertical-align: top
 th
   border-color: #ddd
-td
-  border-color: $border
 
 
 // Headings
 //---------------------------------------------------------------------------
 
 #{headings()}
-  font-weight: 400
   line-height: 1
   padding: 0
-
-h1
-  +font-size(36)
-h2
-  +font-size(30)
-h3
-  +font-size(24)
-h4
-  +font-size(20)
-h5
-  +font-size(16)
-h6
-  +font-size(14)
+  margin: 10px 0
 
 
 // Lists
 //---------------------------------------------------------------------------
 
 dt
-  @extend h4
-  margin-top: 1em
+  font-weight: bold
+  margin-top: 10px
 
 
 // Content
 //---------------------------------------------------------------------------
 
-.submitted
-  color: $gray
-  margin: 1em 0
-
-article
-  margin: 0 0 40px 0
-
 p
-  margin: 1.25em 0
+  margin: 10px 0
   &:first-child
     margin-top: 0
   &:last-child
     margin-bottom: 0
 
 
-// Admin
-//---------------------------------------------------------------------------
-
-#toolbar-home
-  float: left
+@import design/design

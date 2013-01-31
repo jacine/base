@@ -1,0 +1,138 @@
+@import theme
+
+// PageSlide Toggle Link
+//-----------------------------------------------------------------------------
+
+.toolbar-toggle
+  background: rgba($background-color, 0.5)
+  color: $color
+  line-height: 1
+  text-align: center
+  position: absolute
+  position: fixed
+  top: 0
+  left: 0
+  width: 44px
+  height: 44px
+  z-index: 99
+  .pageslide-open &
+    background: transparent
+  &:before
+    @extend %ss-rows
+    @extend %inline-block
+    +box-sizing(content-box)
+    background: $background-color
+    color: $color
+    margin-top: 14px
+    .pageslide-open &
+      background: transparent
+
+  @media only screen and (max-device-width: 1024px)
+    top: auto
+    bottom: 0
+
+// PageSlide Content
+//-----------------------------------------------------------------------------
+
+#pageslide
+  // Base
+  display: none
+  position: absolute
+  position: fixed
+  top: 0
+  height: 100%
+  z-index: 98
+  width: $pageslide-width
+  overflow: hidden
+
+  // Style
+  +box-shadow(inset 0 0 10px rgba($shadow-color, 0.075))
+  background: rgba($background-color, 0.2)
+  border-top: solid 44px rgba($background-color, 0.4)
+  line-height: 1
+  overflow: hidden
+  @media only screen and (max-device-width: 1024px)
+    border-top: 0
+    border-bottom: solid 44px $background-color
+
+  .toolbar
+    overflow: scroll
+    -webkit-overflow-scrolling: touch
+    height: 100%
+  ul, li
+    display: block
+    padding: 0
+    list-style: none
+  ul
+    border-bottom: solid 1px rgba($background-color, 0.05)
+    margin: 0 0 0.5em 0
+    padding: 0.5em 0
+  li
+    margin: 0
+    position: relative
+  a
+    +link-colors($color, rgba($color, 0.5), $color)
+    @extend %inline-block
+    padding: 8px 20px
+    &:focus:before, &:hover:before
+      color: rgba($color, 0.5)
+    &.active
+      font-weight: bold
+
+  // Common styles for icons.
+  a:before
+    color: $color
+    margin-right: 0.5em
+  .home a:before
+    @extend %ss-home
+  .account > a:before
+    @extend %ss-user
+  .logout > a:before
+    @extend %ss-logout
+  a[href$="/admin/content"]:before
+    @extend %ss-file
+  a[href$="/admin/structure"]:before
+    @extend %ss-buildings
+  a[href$="/admin/dashboard"]:before
+    @extend %ss-dashboard
+  a[href$="/node/add"]:before
+    @extend %ss-compose
+  a[href$="/admin/content"]:before
+    @extend %ss-filter
+  a[href$="/admin/people"]:before
+    @extend %ss-users
+  a[href$="/admin/modules"]:before
+    @extend %ss-briefcase
+  a[href$="/admin/config"]:before
+    @extend %ss-settings
+  a[href$="/admin/reports"]:before
+    @extend %ss-barchart
+  a[href$="/admin/appearance"]:before
+    @extend %ss-layout
+  a[href$="/admin/help"]:before
+    @extend %ss-help
+
+  // Shortcut
+  .toolbar-drawer
+    position: relative
+    > a
+      position: absolute
+      top: 0
+      right: 0
+      // Edit shortcut link.
+      &:last-child:before
+        @extend %ss-write
+
+  // Hide shortcut toggle. Serves no function without its' JavaScript, so it
+  // shouldn't be in the template at all.
+  .toolbar-menu a.toggle
+    display: none
+
+
+// Admin Menu
+//-----------------------------------------------------------------------------
+
+div#admin-menu
+  margin-left: 44px
+  .pageslide-open &
+    margin-left: $pageslide-width

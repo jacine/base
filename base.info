@@ -2,7 +2,8 @@ name = Base
 core = 7.x
 description = A base theme by Jacine with HTML5 implementation, core bug fixes, Sass and leaner markup.
 
-stylesheets[screen][] = css/styles.css
+scripts[] = js/base.js
+stylesheets[all][] = css/styles.css
 
 regions[header] = Header
 regions[navigation] = Navigation

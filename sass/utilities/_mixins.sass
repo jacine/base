@@ -53,28 +53,49 @@
     &:hover, &:focus
       color: $hoverfocus
   @if $active
-    &:active, &.active, .active-trail &
+    &:active, &.active
       color: $active
 
 
-// Font-sizing
+// Stretch
 //------------------------------------------------------------------------------
 
-// This works with the $base-font-size variable, so be sure to set it, without
-// units. +base-font-size needs to be set on <html>. It is the root for rem
-// calculations, and without it (unless the base is 16px) the calculations
-// will be incorrect.
+=stretch
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
 
-=base-font-size($pixels: $base-font-size)
-  font-size: $pixels + px
-  font-size: ($pixels / 16) * 100%
 
-// This function will take the desired pixel result and provide a pixel fallback
-// version as well as rem version. It uses the $base variable
+// Text bubble
+// - Border and arrow width dimensions work best with even numbers.
+//------------------------------------------------------------------------------
 
-=font-size($pixels: $base-font-size)
-  font-size: $pixels + px
-  font-size: ($pixels / $base-font-size) + rem
+=text-bubble($border-width: 1px, $arrow-width: 20px, $position: 50%, $background: $box-background, $border: $box-border)
+  +border-radius(6px)
+  background: $background
+  border: $border-width solid $border
+  padding: 10px
+  position: relative
+  &:after, &:before
+    border: solid transparent
+    border-color: transparent
+    content: ""
+    height: 0
+    left: $position
+    pointer-events: none
+    position: absolute
+    width: 0
+    top: 100%
+  &:after
+    border-top-color: $background
+    border-width: $arrow-width
+    margin-left: 0 - $arrow-width
+  &:before
+    border-top-color: $border
+    border-width: $arrow-width  + $border-width + ($border-width / 2)
+    margin-left: 0 - ($arrow-width  + $border-width + ($border-width / 2))
 
 
 // Mixin to add nested media queries.
