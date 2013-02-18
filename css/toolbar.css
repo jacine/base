@@ -1,24 +1,15 @@
 @charset "UTF-8";
-/* Symbolset
-   www.symbolset.com
-   Copyright © 2012 Oak Studios LLC
+/*
+* Symbolset
+* www.symbolset.com
+* Copyright © 2012 Oak Studios LLC
 */
-@font-face {
-  font-family: "SSStandard";
-  src: url("../fonts/symbolset/ss-standard.eot");
-  src: url("../fonts/symbolset/ss-standard.eot?#iefix") format("embedded-opentype"), url("../fonts/symbolset/ss-standard.woff") format("woff"), url("../fonts/symbolset/ss-standard.ttf") format("truetype"), url("../fonts/symbolset/ss-standard.svg#SSStandard") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
-#pageslide .toolbar-drawer > a:last-child:before, #pageslide a[href$="/node/add"]:before, #pageslide .account > a:before, #pageslide a[href$="/admin/people"]:before, #pageslide a[href$="/admin/reports"]:before, #pageslide .home a:before, #pageslide a[href$="/admin/structure"]:before, .toolbar-toggle:before, #pageslide a[href$="/admin/content"]:before, #pageslide a[href$="/admin/appearance"]:before, #pageslide a[href$="/admin/help"]:before, #pageslide .logout > a:before, #pageslide a[href$="/admin/config"]:before, #pageslide a[href$="/admin/dashboard"]:before, #pageslide a[href$="/admin/modules"]:before {
-  font-family: "SSStandard";
+#pageslide a[href$="/admin/reports"]:before, #pageslide a[href$="/admin/modules"]:before, #pageslide a[href$="/admin/structure"]:before, #pageslide a[href$="/node/add"]:before, #pageslide a[href$="/admin/dashboard"]:before, #pageslide a[href$="/admin/content"]:before, #pageslide a[href$="/admin/help"]:before, #pageslide .home a:before, #pageslide a[href$="/admin/appearance"]:before, #pageslide .logout > a:before, .toolbar-toggle:before, #pageslide a[href$="/admin/config"]:before, #pageslide .account > a:before, #pageslide a[href$="/admin/people"]:before, #pageslide .toolbar-drawer > a:last-child:before {
   font-style: normal;
   font-weight: normal;
   text-decoration: none;
   text-rendering: optimizeLegibility;
   white-space: nowrap;
-  /*-webkit-font-feature-settings: "liga"; Currently broken in Chrome >= v22. Falls back to text-rendering. Safari is unaffected. */
   -moz-font-feature-settings: "liga=1";
   -moz-font-feature-settings: "liga";
   -ms-font-feature-settings: "liga" 1;
@@ -26,72 +17,85 @@
   font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
-html:hover #pageslide .toolbar-drawer > a:last-child:before, #pageslide html:hover .toolbar-drawer > a:last-child:before, html:hover #pageslide a[href$="/node/add"]:before, #pageslide html:hover a[href$="/node/add"]:before, html:hover #pageslide .account > a:before, #pageslide html:hover .account > a:before, html:hover #pageslide a[href$="/admin/people"]:before, #pageslide html:hover a[href$="/admin/people"]:before, html:hover #pageslide a[href$="/admin/reports"]:before, #pageslide html:hover a[href$="/admin/reports"]:before, html:hover #pageslide .home a:before, #pageslide .home html:hover a:before, html:hover #pageslide a[href$="/admin/structure"]:before, #pageslide html:hover a[href$="/admin/structure"]:before, html:hover .toolbar-toggle:before, html:hover #pageslide a[href$="/admin/content"]:before, #pageslide html:hover a[href$="/admin/content"]:before, html:hover #pageslide a[href$="/admin/appearance"]:before, #pageslide html:hover a[href$="/admin/appearance"]:before, html:hover #pageslide a[href$="/admin/help"]:before, #pageslide html:hover a[href$="/admin/help"]:before, html:hover #pageslide .logout > a:before, #pageslide html:hover .logout > a:before, html:hover #pageslide a[href$="/admin/config"]:before, #pageslide html:hover a[href$="/admin/config"]:before, html:hover #pageslide a[href$="/admin/dashboard"]:before, #pageslide html:hover a[href$="/admin/dashboard"]:before, html:hover #pageslide a[href$="/admin/modules"]:before, #pageslide html:hover a[href$="/admin/modules"]:before {
+
+html:hover #pageslide a[href$="/admin/reports"]:before, #pageslide html:hover a[href$="/admin/reports"]:before, html:hover #pageslide a[href$="/admin/modules"]:before, #pageslide html:hover a[href$="/admin/modules"]:before, html:hover #pageslide a[href$="/admin/structure"]:before, #pageslide html:hover a[href$="/admin/structure"]:before, html:hover #pageslide a[href$="/node/add"]:before, #pageslide html:hover a[href$="/node/add"]:before, html:hover #pageslide a[href$="/admin/dashboard"]:before, #pageslide html:hover a[href$="/admin/dashboard"]:before, html:hover #pageslide a[href$="/admin/content"]:before, #pageslide html:hover a[href$="/admin/content"]:before, html:hover #pageslide a[href$="/admin/help"]:before, #pageslide html:hover a[href$="/admin/help"]:before, html:hover #pageslide .home a:before, #pageslide .home html:hover a:before, html:hover #pageslide a[href$="/admin/appearance"]:before, #pageslide html:hover a[href$="/admin/appearance"]:before, html:hover #pageslide .logout > a:before, #pageslide html:hover .logout > a:before, html:hover .toolbar-toggle:before, html:hover #pageslide a[href$="/admin/config"]:before, #pageslide html:hover a[href$="/admin/config"]:before, html:hover #pageslide .account > a:before, #pageslide html:hover .account > a:before, html:hover #pageslide a[href$="/admin/people"]:before, #pageslide html:hover a[href$="/admin/people"]:before, html:hover #pageslide .toolbar-drawer > a:last-child:before, #pageslide html:hover .toolbar-drawer > a:last-child:before {
   -ms-zoom: 1;
 }
 
-#pageslide .toolbar-drawer > a:last-child:before {
-  content: "✎";
-}
-
-#pageslide a[href$="/node/add"]:before {
-  content: "📝";
-}
-
-#pageslide .account > a:before {
-  content: "👤";
-}
-
-#pageslide a[href$="/admin/people"]:before {
-  content: "👥";
-}
-
 #pageslide a[href$="/admin/reports"]:before {
-  content: "📊";
-}
-
-#pageslide .home a:before {
-  content: "⌂";
-}
-
-#pageslide a[href$="/admin/structure"]:before {
-  content: "🏢";
-}
-
-.toolbar-toggle:before {
-  content: "";
-}
-
-#pageslide a[href$="/admin/content"]:before {
-  content: "";
-}
-
-#pageslide a[href$="/admin/content"]:before {
-  content: "📄";
-}
-
-#pageslide a[href$="/admin/appearance"]:before {
-  content: "";
-}
-
-#pageslide a[href$="/admin/help"]:before {
-  content: "❓";
-}
-
-#pageslide .logout > a:before {
-  content: "";
-}
-
-#pageslide a[href$="/admin/config"]:before {
-  content: "⚙";
-}
-
-#pageslide a[href$="/admin/dashboard"]:before {
-  content: "";
+  content: '📊';
 }
 
 #pageslide a[href$="/admin/modules"]:before {
-  content: "💼";
+  content: '💼';
+}
+
+#pageslide a[href$="/admin/structure"]:before {
+  content: '🏢';
+}
+
+#pageslide a[href$="/node/add"]:before {
+  content: '📝';
+}
+
+#pageslide a[href$="/admin/dashboard"]:before {
+  content: '';
+}
+
+#pageslide a[href$="/admin/content"]:before {
+  content: '📄';
+}
+
+#pageslide a[href$="/admin/content"]:before {
+  content: '';
+}
+
+#pageslide a[href$="/admin/help"]:before {
+  content: '❓';
+}
+
+#pageslide .home a:before {
+  content: '⌂';
+}
+
+#pageslide a[href$="/admin/appearance"]:before {
+  content: '';
+}
+
+#pageslide .logout > a:before {
+  content: '';
+}
+
+.toolbar-toggle:before {
+  content: '';
+}
+
+#pageslide a[href$="/admin/config"]:before {
+  content: '⚙';
+}
+
+#pageslide .account > a:before {
+  content: '👤';
+}
+
+#pageslide a[href$="/admin/people"]:before {
+  content: '👥';
+}
+
+#pageslide .toolbar-drawer > a:last-child:before {
+  content: '✎';
+}
+
+@font-face {
+  font-family: "SSStandard";
+  src: url("../fonts/ss-standard/webfonts/ss-standard.eot");
+  src: url("../fonts/ss-standard/webfonts/ss-standard.eot?#iefix") format("embedded-opentype"), url("../fonts/ss-standard/webfonts/ss-standard.woff") format("woff"), url("../fonts/ss-standard/webfonts/ss-standard.ttf") format("truetype"), url("../fonts/ss-standard/webfonts/ss-standard.svg#SSStandard") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+#pageslide a[href$="/admin/reports"]:before, #pageslide a[href$="/admin/modules"]:before, #pageslide a[href$="/admin/structure"]:before, #pageslide a[href$="/node/add"]:before, #pageslide a[href$="/admin/dashboard"]:before, #pageslide a[href$="/admin/content"]:before, #pageslide a[href$="/admin/help"]:before, #pageslide .home a:before, #pageslide a[href$="/admin/appearance"]:before, #pageslide .logout > a:before, .toolbar-toggle:before, #pageslide a[href$="/admin/config"]:before, #pageslide .account > a:before, #pageslide a[href$="/admin/people"]:before, #pageslide .toolbar-drawer > a:last-child:before {
+  font-family: "SSStandard";
 }
 
 .toolbar-toggle:before, #pageslide a {
