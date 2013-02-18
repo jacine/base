@@ -137,8 +137,8 @@ html:hover #pageslide .toolbar-drawer > a:last-child:before, #pageslide html:hov
 }
 
 .toolbar-toggle {
-  background: rgba(39, 39, 39, 0.5);
-  color: #cccccc;
+  background: rgba(255, 255, 255, 0.5);
+  color: #222222;
   line-height: 1;
   text-align: center;
   position: absolute;
@@ -156,8 +156,8 @@ html:hover #pageslide .toolbar-drawer > a:last-child:before, #pageslide html:hov
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  background: #272727;
-  color: #cccccc;
+  background: white;
+  color: #222222;
   margin-top: 14px;
 }
 .pageslide-open .toolbar-toggle:before {
@@ -182,15 +182,15 @@ html:hover #pageslide .toolbar-drawer > a:last-child:before, #pageslide html:hov
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.075);
-  background: rgba(39, 39, 39, 0.2);
-  border-top: solid 44px rgba(39, 39, 39, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  border-top: solid 44px rgba(255, 255, 255, 0.4);
   line-height: 1;
   overflow: hidden;
 }
 @media only screen and (max-device-width: 1024px) {
   #pageslide {
     border-top: 0;
-    border-bottom: solid 44px #272727;
+    border-bottom: solid 44px white;
   }
 }
 #pageslide .toolbar {
@@ -204,7 +204,7 @@ html:hover #pageslide .toolbar-drawer > a:last-child:before, #pageslide html:hov
   list-style: none;
 }
 #pageslide ul {
-  border-bottom: solid 1px rgba(39, 39, 39, 0.05);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.05);
   margin: 0 0 0.5em 0;
   padding: 0.5em 0;
 }
@@ -216,22 +216,22 @@ html:hover #pageslide .toolbar-drawer > a:last-child:before, #pageslide html:hov
   padding: 8px 20px;
 }
 #pageslide a, #pageslide a:visited {
-  color: #cccccc;
+  color: #222222;
 }
 #pageslide a:hover, #pageslide a:focus {
-  color: rgba(204, 204, 204, 0.5);
+  color: rgba(34, 34, 34, 0.5);
 }
 #pageslide a:active, #pageslide a.active {
-  color: #cccccc;
+  color: #222222;
 }
 #pageslide a:focus:before, #pageslide a:hover:before {
-  color: rgba(204, 204, 204, 0.5);
+  color: rgba(34, 34, 34, 0.5);
 }
 #pageslide a.active {
   font-weight: bold;
 }
 #pageslide a:before {
-  color: #cccccc;
+  color: #222222;
   margin-right: 0.5em;
 }
 #pageslide .toolbar-drawer {

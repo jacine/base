@@ -34,10 +34,10 @@ a.button-edit:before {
   content: "✎";
 }
 
-#header, #footer, #main, #content, .form-actions, .messages, .tasks, ul.tabs, .book-navigation, .block, article, .main .block, .links {
+#header, #footer, #main, #content, legend, .form-actions, .form-control, .form-controls, .messages, .tasks, ul.tabs, .book-navigation, .block, .content, article, .main .block, .links {
   *zoom: 1;
 }
-#header:after, #footer:after, #main:after, #content:after, .form-actions:after, .messages:after, .tasks:after, ul.tabs:after, .book-navigation:after, .block:after, article:after, .links:after {
+#header:after, #footer:after, #main:after, #content:after, legend:after, .form-actions:after, .form-control:after, .form-controls:after, .messages:after, .tasks:after, ul.tabs:after, .book-navigation:after, .block:after, .content:after, article:after, .links:after {
   content: "";
   display: table;
   clear: both;
@@ -125,6 +125,13 @@ label.option, input[type="submit"], .button-small, input[type="button"], .form-a
     display: inline;
   }
 }
+legend {
+  clear: both;
+  display: block;
+  float: left;
+  width: 100%;
+}
+
 input, textarea, select {
   border: solid 1px rgba(0, 0, 0, 0.1);
   display: inline-block;
@@ -171,7 +178,8 @@ label.option + .description {
   margin-left: 0;
 }
 
-.form-control, .form-controls {
+.form-actions, .form-control, .form-controls {
+  clear: both;
   margin: 1em 0;
   position: relative;
 }
@@ -421,10 +429,10 @@ ul.primary {
   margin: 0 0 0 -1px;
 }
 .primary a:hover, .primary a:focus {
-  background: #272727;
+  background: white;
 }
 .primary a.active {
-  background: #272727 url('../img/bg/debut_dark.png?1352308674');
+  background: white url('../img/bg/debut_light.png?1352308673');
 }
 .primary > li:first-child a {
   border-width: 1px 1px 0 1px;
@@ -685,8 +693,8 @@ article, .main .block, .links {
 }
 
 body {
-  background: #272727 url('../img/bg/debut_dark.png?1352308674');
-  color: #cccccc;
+  background: white url('../img/bg/debut_light.png?1352308673');
+  color: #222222;
 }
 
 a {
@@ -744,11 +752,8 @@ fieldset fieldset:only-child {
 }
 
 legend {
-  float: left;
   line-height: 2.5;
   margin: 0;
-  width: 100%;
-  clear: both;
 }
 legend a {
   text-decoration: none;

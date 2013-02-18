@@ -25,6 +25,7 @@ $action_links = render($action_links);
 <?php endif; ?>
 <header role="banner" id="header">
   <div class="container">
+    <?php if ($site_name || $logo): ?>
     <hgroup class="branding">
       <?php if ($site_name): ?>
         <h1 class="site-name">
@@ -39,6 +40,7 @@ $action_links = render($action_links);
         <h2 class="site-slogan"><?php print $site_slogan; ?></h2>
       <?php endif; ?>
     </hgroup>
+    <?php endif; ?>
     <?php print $header; ?>
   </div>
 </header>

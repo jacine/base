@@ -1,6 +1,11 @@
 // Forms
 //------------------------------------------------------------------------------
-.form-actions
+
+legend
+  clear: both
+  display: block
+  float: left
+  width: 100%
   @extend %clearfix
 
 input, textarea, select
@@ -41,7 +46,9 @@ label
       display: inline-block
       margin-left: 0
 
-.form-control, .form-controls
+.form-actions, .form-control, .form-controls
+  @extend %clearfix
+  clear: both
   margin: 1em 0
   position: relative
 
