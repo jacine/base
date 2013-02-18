@@ -28,8 +28,8 @@ a.button-edit:before {
 
 @font-face {
   font-family: "SSStandard";
-  src: url("../fonts/ss-standard/webfonts/ss-standard.eot");
-  src: url("../fonts/ss-standard/webfonts/ss-standard.eot?#iefix") format("embedded-opentype"), url("../fonts/ss-standard/webfonts/ss-standard.woff") format("woff"), url("../fonts/ss-standard/webfonts/ss-standard.ttf") format("truetype"), url("../fonts/ss-standard/webfonts/ss-standard.svg#SSStandard") format("svg");
+  src: url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.eot");
+  src: url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.eot?#iefix") format("embedded-opentype"), url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.woff") format("woff"), url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.ttf") format("truetype"), url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.svg#SSStandard") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -436,7 +436,7 @@ ul.primary {
   background: white;
 }
 .primary a.active {
-  background: white url('../img/bg/debut_light.png?1352308673');
+  background: white url('../img/bg/debut_light.png?1361211273');
 }
 .primary > li:first-child a {
   border-width: 1px 1px 0 1px;
@@ -697,7 +697,7 @@ article, .main .block, .links {
 }
 
 body {
-  background: white url('../img/bg/debut_light.png?1352308673');
+  background: white url('../img/bg/debut_light.png?1361211273');
   color: #222222;
 }
 

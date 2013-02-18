@@ -88,8 +88,8 @@ html:hover #pageslide a[href$="/admin/reports"]:before, #pageslide html:hover a[
 
 @font-face {
   font-family: "SSStandard";
-  src: url("../fonts/ss-standard/webfonts/ss-standard.eot");
-  src: url("../fonts/ss-standard/webfonts/ss-standard.eot?#iefix") format("embedded-opentype"), url("../fonts/ss-standard/webfonts/ss-standard.woff") format("woff"), url("../fonts/ss-standard/webfonts/ss-standard.ttf") format("truetype"), url("../fonts/ss-standard/webfonts/ss-standard.svg#SSStandard") format("svg");
+  src: url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.eot");
+  src: url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.eot?#iefix") format("embedded-opentype"), url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.woff") format("woff"), url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.ttf") format("truetype"), url("../../../libraries/fonts/ss-standard/webfonts/ss-standard.svg#SSStandard") format("svg");
   font-weight: normal;
   font-style: normal;
 }
