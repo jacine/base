@@ -7,6 +7,6 @@
 [submodule "sass/libraries/normalize"]
 	path = sass/libraries/normalize
 	url = https://github.com/jacine/normalize.css.git
-[submodule "sass/symbolset"]
-	path = sass/symbolset
+[submodule "sass/libraries/symbolset"]
+	path = sass/libraries/symbolset
 	url = git@github.com:jacine/symbolset.git
