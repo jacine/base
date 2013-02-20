@@ -1,6 +1,6 @@
 name = Base
 core = 7.x
-description = "A base theme by Jacine with HTML5 implementation, core bug fixes, Sass and leaner markup."
+description = "A work in progress base theme that's better than Drupal core."
 
 scripts[] = js/base.js
 stylesheets[all][] = css/styles.css
@@ -13,3 +13,9 @@ regions[content] = Content
 regions[sidebar_first] = Sidebar first
 regions[sidebar_second] = Sidebar second
 regions[footer] = Footer
+
+settings[mobile_friendly] = 1
+settings[touch_icons] = 0
+settings[maintenance_js] = 0
+settings[maintenance_html] = 1
+settings[use_theme_jquery] = 1

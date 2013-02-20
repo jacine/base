@@ -4,13 +4,13 @@
  * Implements hook_js_alter().
  */
 function base_js_alter(&$js) {
+  global $user;
   $theme = drupal_get_path('theme', 'base');
 
   // JS Files to remove.
   $remove = array(
     'misc/tableheader.js',
   );
-
   if (!empty($remove)) {
     foreach ($js as $key => $value) {
       if (in_array($key, $remove)) {
@@ -32,13 +32,16 @@ function base_js_alter(&$js) {
   if (!empty($replace)) {
     foreach ($js as $key => $value) {
       // Override jQuery (even when jQuery Update is used).
-      if (strstr($key, 'jquery.min.js')) {
-        $js[$key]['data'] = $theme . '/js/libraries/jquery/jquery.min.js';
-        $js[$key]['version'] = '1.9.0';
+      if (theme_get_setting('use_theme_jquery')) {
+        if (strpos($key, '/jquery.min.js') || strpos($key,'/jquery.js')) {
+          $js[$key]['data'] = $theme . '/js/libraries/jquery/jquery.min.js';
+          $js[$key]['version'] = '1.9.0';
+        }
       }
       // Handle replacements.
       if (array_key_exists($key, $replace)) {
         $js[$key]['data'] = $theme . '/js/' . $replace[$key];
+        // Pageslide plugin must be loaded at the bottom of the page.
         if ($replace[$key] == 'toolbar.js') {
           $js[$key]['scope'] = 'footer';
         }
@@ -51,6 +54,7 @@ function base_js_alter(&$js) {
  * Implements hook_css_alter().
  */
 function base_css_alter(&$css) {
+  global $user;
   $theme = drupal_get_path('theme', 'base');
 
   // CSS files to remove.
@@ -67,7 +71,7 @@ function base_css_alter(&$css) {
     'modules/user/user.css',
     'modules/search/search.css',
     'modules/shortcut/shortcut.css',
-    // 'modules/system/system.admin.css',
+    'modules/system/system.admin.css',
     'modules/system/system.menus.css',
     'modules/system/system.messages.css',
     'modules/system/system.theme.css',
@@ -92,6 +96,21 @@ function base_css_alter(&$css) {
     foreach ($css as $key => $value) {
       if (array_key_exists($key, $replace)) {
         $css[$key]['data'] = $theme . '/css/' . $replace[$key];
+      }
+    }
+  }
+
+  // When the site is in maintenance mode, the only pages that should share
+  // CSS assets with the rest of the site are the login/password pages. Nothing
+  // else is actually accessible to anonymous users.
+  $current = current_path();
+  if ($user->uid == 0 && variable_get('maintenance_mode') && !in_array($current, array('user', 'user/login', 'user/password'))) {
+    foreach ($css as $key => $value) {
+      // Remove all stylesheets excpept for global.css & maintenance.css. Doing
+      // it this way, instead of hard-coding in the template, allows built-in
+      // aggregation work normally, and for subthemes to override.
+      if (strpos($key, '/system.base.css') === FALSE && strpos($key, '/maintenance.css') === FALSE) {
+        unset($css[$key]);
       }
     }
   }
@@ -143,40 +162,42 @@ function base_html_head_alter(&$head_elements) {
   );
 
   // Mobile-friendly Viewport settings.
-  $head_elements['base_handheld_friendly'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'HandheldFriendly',
-      'content' => 'True',
-    ),
-  );
-  $head_elements['base_mobile_optimized'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'MobileOptimized',
-      'content' => '320',
-    ),
-  );
-  $head_elements['base_viewport'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'viewport',
-      'content' => 'width=device-width,initial-scale=1.0',
-    ),
-  );
+  if (theme_get_setting('mobile_friendly')) {
+    $head_elements['base_handheld_friendly'] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'HandheldFriendly',
+        'content' => 'True',
+      ),
+    );
+    $head_elements['base_mobile_optimized'] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'MobileOptimized',
+        'content' => '320',
+      ),
+    );
+    $head_elements['base_viewport'] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'viewport',
+        'content' => 'width=device-width,initial-scale=1.0',
+      ),
+    );
 
-  // Activate ClearType for Mobile IE.
-  $head_elements['base_cleartype'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'http-equiv' => 'cleartype',
-      'content' => 'on',
-    ),
-  );
+    // Activate ClearType for Mobile IE.
+    $head_elements['base_cleartype'] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'http-equiv' => 'cleartype',
+        'content' => 'on',
+      ),
+    );
+  }
 
   // Apple Touch Icons. See: http://mathiasbynens.be/notes/touch-icons
   // Note: When a subtheme is active, this pulls the icons from the subtheme,

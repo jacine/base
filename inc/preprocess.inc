@@ -5,7 +5,7 @@
  * - Use Drupal 8 way of processing attributes for <html> and <body>.
  */
 function base_preprocess_html(&$vars) {
-  // Create a variable for the path to the theme.
+  // Path to theme root.
   $vars['path'] = drupal_get_path('theme', 'base');
 
   // Initializes attributes which are specific to the html and body elements.
@@ -73,6 +73,28 @@ function base_preprocess_page(&$vars) {
   if (theme_get_setting('node_title_location') == 'node') {
     $vars['suppress_node_title'] = TRUE;
   }
+}
+
+/**
+ * Implements template_preprocess_maintenance_page().
+ * @see also base_process_maintenance_page() in process.inc.
+ */
+function base_preprocess_maintenance_page(&$vars) {
+  // Path to theme root.
+  $vars['path'] = drupal_get_path('theme', 'base');
+
+  // Add a maintenance-specific stylesheet.
+  drupal_add_css($vars['path'] . '/css/maintenance.css');
+
+  if (theme_get_setting('maintenance_html')) {
+    // Run the message through the Full HTML filter.
+    $vars['message'] = check_markup(variable_get('maintenance_mode_message'), 'full_html');
+  }
+  else {
+    $vars['message'] = $vars['content'];
+  }
+
+
 }
 
 /**

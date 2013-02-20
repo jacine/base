@@ -181,7 +181,7 @@ html:hover #pageslide a[href$="/admin/reports"]:before, #pageslide html:hover a[
   top: 0;
   height: 100%;
   z-index: 98;
-  width: 320px;
+  width: 20em;
   overflow: hidden;
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.075);
@@ -254,5 +254,5 @@ div#admin-menu {
   margin-left: 44px;
 }
 .pageslide-open div#admin-menu {
-  margin-left: 320px;
+  margin-left: 20em;
 }

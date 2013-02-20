@@ -6,7 +6,7 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
   <!--[if lt IE 9]>
-    <script src="<?php $path . '/lib/html5shiv/dist/html5shiv.js'; ?>"></script>
+    <script src="<?php print $path . '/js/libraries/html5shiv/dist/html5shiv.js'; ?>"></script>
   <![endif]-->
 </head>
 <body<?php print $body_attributes;?>>

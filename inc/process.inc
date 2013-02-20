@@ -37,6 +37,16 @@ function base_process_page(&$vars) {
   }
 }
 
+/**
+ * Implements template_process_maintenance_page().
+ * @see also base_preprocess_maintenance_page() in preprocess.inc.
+ */
+function base_process_maintenance_page(&$vars) {
+  // Remove all scripts from the page.
+  if (theme_get_setting('maintenance_js') === 0) {
+    $vars['scripts'] = '';
+  }
+}
 
 /**
  * Implements hook_process_html_tag().

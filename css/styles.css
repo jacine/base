@@ -158,10 +158,8 @@ textarea {
 
 label {
   display: block;
-  font-weight: bold;
 }
 label.option {
-  font-weight: normal;
   margin-bottom: 0;
 }
 label.option + .description {
@@ -594,7 +592,7 @@ body {
 
 pre, code, kbd, samp {
   font-family: Monaco, monospace, serif;
-  font-size: 12.6px;
+  font-size: 0.9em;
 }
 
 a, a:visited {
@@ -622,6 +620,17 @@ ul, li {
   border: 0;
 }
 
+::selection {
+  background: #333333;
+  color: white !important;
+}
+
+a::selection {
+  background: #333333;
+  color: white !important;
+  text-decoration: underline !important;
+}
+
 table {
   margin: 20px 0;
   width: 100%;
@@ -635,10 +644,6 @@ table, tr, td, th {
 table, td, th {
   border-style: solid;
   border-width: 1px 0 0 1px;
-}
-
-thead {
-  background-color: whitesmoke;
 }
 
 td, th {
@@ -699,6 +704,7 @@ article, .main .block, .links {
 body {
   background: white url('../img/bg/debut_light.png?1361211273');
   color: #222222;
+  font-family: "Proxima Nova", sans-serif;
 }
 
 a {
